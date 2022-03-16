@@ -1,0 +1,244 @@
+Chapter 1 Writing in the Quancept language
+
+Quancept telephone, personal and Web interviewing is controlled by a script.
+
+Keywords:
+-comments 	comments
+-continue	a place holder statement
+-end		the end of the script
+-main		the main part of the script
+-newline	defines a character for forced line breaks in text
+-screener	the screening part of the script
+
+*Components of a script
+keywords = special Quancept words
+
+///Questions and responses
+
+questions and responses are the basis of your script. A question is a special statement, has two distinct parts, the question text
+and the response list.
+
+structure:
+- Label names the question.
+- Keyword ask.
+- Question text enclosed in single quotes
+- Keyword rep.	
+- The main response type. This id whetether the response is numeric (integer o real), open ended or precoded.
+- The list of acceptable responses, with each precoded response enclosed in single quotes. If the
+  response type is coded (open ended), no list is needed because respondents can say what they
+  like. However, you may indicate the number of codes to be reserved for later recoding of such
+  responses.
+- Subsidiary allowable responses such as ‘specified other’ (for when none of the precoded
+  answers applies), no answer, don’t know or refused.
+- Optional keywords that modify the standard behavior, appearance or coding of the question and its responses.
+
+Example:
+
+fveg1	ask 'Wich other frozen vegetables do you buy?'
+	resp coded (39)
+
+fveg1 = is the label. Refers to the text of the quesiton.
+ask = is the keyword that tells Quancept that this is a question.
+'Wich other frozen vegetables do you buy?' = question to be asked.
+
+the response list for this question starts on the next line. 
+coded = respondents may say whichever frozen vegetables they buy.
+39 = indicates the maximum number of codes wich may be used when open ends are coded.
+
+Variations: 
+fveg2 	ask ’Which of these frozen vegetables do you buy?’
+	resp mp ’Peas’ / ’Carrots’ / ’Beans’ / ’Sprouts’ / ’Mixed’
+He/she is allowed to specify more than one type because the response is defined as mp (multipunched or multicoded)
+Notice that each response is enclosed in single quotes and separated from its neighbors by a slash.
+
+fveg3 	ask ’Which frozen vegetable do you use most often?’
+	resp sp ’Peas’ / ’Beans’ / ’Carrots’ / ’Sprouts’ / ’Mixed’
+
+In this example, respondents must indicate which type of frozen vegetable they use most
+frequently. They must choose one type from the given list because the response is defined as sp
+(single punched or single coded).
+Is designed to accept any type of response.
+
+If a respondent gives no answer (for example, he/she never buys frozen vegetables), the interviewer
+may select the special null response representing no answer. If the respondent does not know which
+answer to give, the interviewer may type dk. If the respondent refuses to answer, the interviewer
+may type ref:
+
+fveg4 	ask ’Which frozen vegetable do you use most often?’
+	resp sp ’Peas’ / ’Beans’ / ’Carrots’ / ’Sprouts’ / ’Mixed’
+		other null dk ref
+///Checking and verification statements
+You can write statements that check or verify responses given to questions during the course of an
+interview.
+Here is an example of such a statement
+
+set pbc = or(fveg2 / 'peas' / 'beans' / 'carrots')
+
+If the response does not include peas, beans and/or carrots, then pbc is false.
+
+///Routing
+Routing generally occurs when one or more questions do not apply to a certain respondent.
+You will probably use this type of statement when you have different sections of the script for
+different types of respondent, and you want to jump from the end of each section to the start of a
+general section containing questions which must be answered by all respondents. Here is an
+example:
+
+comment Questions for people who have seen the advertising
+	(statements go here)
+	goto collect
+comment Questions for people who have not seen the advertising
+	(statements go here)
+comment Questions for all respondents
+collect continue
+
+structure: 
+- A response text.
+- The word go.
+- The label which marks the routing destination.
+
+For example:
+advert ask ’Have you seen the recent advertising for Brown’’s
+frozen peas?’
+	resp sp ’Yes’ / ’No’ go ctn1
+
+The second way of writing conditional routing is to write a completely separate statement which
+defines the condition which must be true in order for the routing to be executed. Statements of this
+type consist of the following parts:
+- The keyword route.
+- A logical test enclosed in parentheses, defining the conditions under which the routing will be
+followed.
+- The keyword go.
+- The label which marks the routing destination.
+
+Here is an example of routing written in this way:
+route (childs=’No’) go exit
+
+Other example:
+name 	ask ’What is your name?’
+	resp coded
+child 	ask ’Are there any children in your household?’
+	resp sp ’Yes’ / ’No’
+comment Ask about children – age / gender / education
+comment If no children skip to end of script
+	route (child = 'No') go exit
+nchild 	ask 'How many children do you have?'
+	resp num 1+
+	(statements go here)
+exit 	end
+
+The keyword if.
+
+Example:
+	if (age > 18) {
+school 	  ask ’At what age did you leave school?’
+	  resp num 16 to 18
+	  univ ask ’Did you go on to university?’
+	  resp sp ’yes’ / ’no’
+	}
+ctn 	continue
+
+The keyword else.
+
+Example:
+
+comment pbc has a true or false value so we can check it by
+comment typing its name as a logical test by itself
+	if (pbc) {
+d1 	  display ’Peas, beans and/or carrots used most often’
+	}
+	else {
+d2 	  display ’Peas, beans and/or carrots not used most often’
+	}
+
+
+///Loops
+You use loops when you want to ask a series of questions more than once.
+A loop must start with the word for and finish with the word next.
+
+Example: 
+
+f1 	for brand = ’Brown’’s’ / ’Smith’’s’ / ’Jones’’’
+shop 		ask ’Where do you usually buy ’+brand+’ brand of frozen peas?’
+		resp sp ’Tesco’ / ’Sainsbury’ / ’Co-op’ / ’Safeway’
+size 		ask ’Which size packet do you usually buy?’
+		resp sp ’Family’ / ’Large’ / ’Medium’ / ’Small’
+	next
+
+brand were used for show all elements.
+
+///Screey layout and formatting
+
+display ’<b+>Thank you for your help. Goodbye.’
+display ’<c:red>Thank you for your help. Goodbye.’
+display ’<p:18>Thank you for your help. Goodbye.’
+
+///The character set
+The characters and symbols that you may use in Quancept and mrInterview scripts are:
+• The uppercase letters A to Z
+• The lowercase letters a to z
+• The digits 0 to 9
+• The space (blank) character
+• The tab character (when you press the TAB key)
+• The special symbols + – * / \ = < > ( ) { } [ ] ' : " ? ; @ # ! ^ % , . £ $
+
+Special Symbols
+
+Symbol	|| 		
++	|| 	An addition sign in arithmetic statements.
+	||	In text, a pair of + signs encloses variables whose values are to be substituted in that
+	||	text.
+-	|| 	A subtraction sign in arithmetic statements.
+*	||	A multiplication sign in arithmetic statements.
+	||	In loops, a variable name followed by an asterisk in parentheses refers to the value
+	||	of that variable for the current iteration of the loop. For instance, if the loop is being
+	||	repeated for the fourth time, qname(*) refers to the answer given to qname the fourth
+	||	time it was asked.
+	||	With the strngchk function, used as part of a string pattern to match any character in
+	||	a given position in the string.
+/	||	A division sign in arithmetic statements.
+	||	Separates responses in a single-punched, multipunched or numeric response list and
+	||	in defined lists.
+	||	Separates path and file names in Unix.
+\	||	Removes the special meaning from certain symbols so that they can be displayed on
+	||	the interview screen. To make a backslash appear in text, type two consecutive
+	||	backslashes for Quancept CATI, Quancept Web and mrInterview, and four
+	||	consecutive backslashes for Quancept CAPI.
+=	||	Assigns a value to a variable.
+	||	In logical tests, checks whether a variable has a given value.
+<	||	A logical operator meaning less than.
+	||	In logical tests with multipunched texts, checks whether the response was chosen
+	||	with any responses which come before it in the response list.
+>	||	A logical operator meaning greater than.
+	||	In logical tests with multipunched texts, checks whether the response was chosen
+	||	with any responses which come after it in the response list.
+<>	||	A logical operator meaning not equal to.
+	||	In logical tests with multipunched texts, checks whether the response was chosen by
+	||	itself.
+()	||	Enclose logical expressions in routing or if statements.
+	||	In single-punched responses lists, enclose responses with common routing.
+	||	In open-ended response lists, enclose the number of codes to be allocated for coding
+	||	responses.
+	||	In loops, enclose an asterisk to refer to a variable’s subscript.
+	||	In defined lists, enclose the number of codes to be reserved for responses in the list.
+{}	||	Enclose statements forming an if or else clause.
+[]	||	Enclose a question variable whose current value is to be substituted in a response list.
+'	||	A pair of single quotes encloses text such as question text or response text.
+	||	Two consecutive single quotes inside a quoted text represent an apostrophe in the
+	||	displayed text
+@	||	Forces a new line in displayed text on the screen but is not otherwise displayed. (You
+	||	may define a different newline character if you need to display @ as part of the text.)
+^	||	Followed by o to associate a specified other response with a response in a singlepunched
+	||	list.
+	||	Followed by s to signal a single-punched response in an otherwise multipunched list.
+	||	Followed by v to associate a scaling factor with the current response in a singlepunched
+	||	list.
+	||	If used in text, ^ truncates the text at that point and is not displayed on the screen.
+#	||	Match any digit in a given position in the string
+%	||	Match any letter in a given position in the string.
+&	||	amp
+,	||	(comma)
+$	||	enter "null" on a response list database question
+
+///Uppercase versus lowercase letters
+The interviewing program ignores differences between uppercase and lowercase letters in variable
+names and label names.
