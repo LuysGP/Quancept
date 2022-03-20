@@ -1,0 +1,73 @@
+Chapter 3 Quesitons and answers
+
+label   ask 'question_text'
+        resp resp_type [resp_list]
+
+label = unique name for this question.
+ask = is the Quancept keyword wich introduces a question
+question_text is the text of the question
+
+resp = keywrod wich introduces a response list
+resp_type = the response type(for example, single-punched)
+resp_list = the list of permitted responses.
+
+example with a single-punched response list
+
+day     ask 'What day did you go?'
+        resp sp 'monday' / 'tuesday' / 'wednesday' / 'thursday' /
+                'friday' / 'saturday' / 'sunday'
+
+Response type:
+
+sp: single-pnched responses (one response only)
+mp: multipunched responses (one or more responses)
+num: numeric responses that are whole numbers
+real: numeric responses that are decimal numbers
+coded: open-ended (verbatim) responses
+dbase: responses chosen from a Quancept database
+list: responses are the names of definied response lists
+
+///Single-pnched and multipunched responses
+
+Quick Reference
+single-punched list:
+    resp    sp 'resp1'/'resp2'/..../'respN'
+multipunched response list:
+    resp    mp 'resp1'/'resp2'/..../'respN'
+
+///Numeric responses
+
+Quick Reference
+range of integer(whole number) responses, type:
+    resp num lowes [to highest]
+
+use n- and n+ for open-ended ranges.
+
+Enter lists of single values or ranges separated by slashes as for single-punched responses.
+
+All numbers must be whole numbers in the range -999,999,999 to +999,999,999.
+
+specify the permissible response as range of numbers.
+Example:
+
+people  ask 'How many people were there in your party?'
+        resp num 1 to 20
+
+this program accept any number between 1 and 20 incluse as the response to this quesiton.
+
+if one number is negative, this counts as the lowe end of the range and must come first. If both
+values are negative, we would write, for instance:
+
+resp num -100 to -52
+
+//Open-ended responses 
+
+Quick Reference
+open-ended (verbatim) responses, type:
+
+mrInterview     resp coded
+CATI/CAPI/Web:  resp coded[(n)]
+
+for default is to allocate 29 codes (3 columns) for coding of the open-ended text.
+To request more or fewer codes, enter the number of codes you requiere in the parentheses.
+
