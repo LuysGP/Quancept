@@ -1,0 +1,7 @@
+Dudas sobre el script de Quancept de los estudios.
+
+- Que significan las variables CC#
+- Que significa C#FX FIX(#) CC# COLUMN
+- Significado del apartado "STANDARD VARIABLES BEGIN"
+- ""		"" 	 "SAMPLE INFORMATION BEGIN"
+- Significado de algunas funciones

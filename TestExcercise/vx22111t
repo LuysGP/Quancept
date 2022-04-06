@@ -1,0 +1,867 @@
+COMMENT =======================================================================
+COMMENT
+COMMENT                 AMERICAS SURVEY COMPANY
+COMMENT
+COMMENT                  AUTHOR: ASC PROGRAMMING DEPARTMENT
+COMMENT                   EMAIL: programmers@americas-survey.com
+COMMENT
+COMMENT                   STUDY: 
+COMMENT  PROGRAMMING START DATE: 
+COMMENT        FIELD START DATE: 
+COMMENT
+COMMENT =======================================================================
+
+COMMENT -----------------------------------------------------------------------
+COMMENT RESPID = KEY
+COMMENT ALL SAMPLE MUST HAVE A SEQUENTIALLY GENERATED KEY,  THE KEY WILL ALSO
+COMMENT BE SET AS THE RESPONDENT ID.  THIS GREATLY SIMPLIFIES LOOKING THROUGH THE
+COMMENT DATA AND ACCOUNTS.SMS SINCE BOTH IDENTIFIERS ARE THE SAME
+COMMENT -----------------------------------------------------------------------
+
+COMMENT -----------------------------------------------------------------------
+COMMENT SAMPLE VARIABLES
+COMMENT ALL SAMPLE VARIABLES MUST CONTAIN AN ADDITIONAL STRING INDICATING THE 
+COMMENT THE SAMPLE VARIABLE.  PLEASE REFER TO THE FRAGMENT OF CODE THAT STORES
+COMMENT THE KEY INTO THE DATA.
+COMMENT -----------------------------------------------------------------------
+
+
+COMMENT -----------------------------------------------------------------------
+COMMENT FORCE USAGE
+COMMENT 
+COMMENT FORCE(1):       ALL SAMPLE VARIABLES
+COMMENT FORCE(2):       FIXED OPEN ENDED DATA
+COMMENT FORCE(3):       ASC INTERNAL DATA
+COMMENT FORCE(4+):      QUESTIONS THAT ARE ADDED POST FIELD
+COMMENT
+COMMENT -----------------------------------------------------------------------
+
+	MAPOTHZERO
+	ONRESP 'quit' GO PREQUIT
+	SET ON  = '[+*so+]'
+	SET OFF = '[+*se+]'
+	SET TT  = TESTINGRUN
+	SET PROJECT = qcproject
+
+COMMENT =================  RELEASE NUMBER ====================
+
+	COLUMN 177
+	UNSET RELFIX
+
+RELFIX  DUMMYASK 'Store the release number'
+	RESP NUM 1 TO 99
+
+	SET RELFIX = 1
+
+COMMENT =================  COMP ====================
+
+	COLUMN 0108
+COMP	DUMMYASK 'RECORD INTERVIEW RESULT'
+		RESP SP 
+			'Complete'/
+			'Not complete'/
+			'not interested'/
+			'4 -Term 02'/
+			'5 -Term 03'/
+			'6 -Term 04'/
+			'7 -Term 05'/
+			'8 -Term 06'/
+			'9 -Term 07'/
+			'10-Term 08'/
+			'11-Term 09'/
+			'12-Term 10'/
+			'13-Term 11'/
+			'14-Term 12'/
+			'15-Term 13'/
+			'16-Term 14'/
+			'17-OVERQUOTA'/
+			'18-MAIN QRE QUIT' /
+			'19-SCREENER QUIT(REFUSED)'
+
+	SET COMP=2
+
+	SET CC1=' 1'
+	SET CC2=' 2'
+	SET CC3=' 3'
+	SET CC4=' 4'
+	SET CC5=' 5'
+	SET CC6=' 6'
+	SET CC7=' 7'
+	SET CC8=' 8'
+	SET CC9=' 9'
+	SET CC10='10'
+	SET CC11='11'
+	SET CC12='12'
+	SET CC13='13'
+	SET CC14='14'
+	SET CC15='15'
+	SET CC16='16'
+	SET CC17='17'
+	SET CC18='18'
+	SET CC19='19'
+	SET CC20='20'
+	SET CC21='21'
+	SET CC22='22'
+	SET CC23='23'
+	SET CC24='24'
+	SET CC25='25'
+	SET CC26='26'
+	SET CC27='27'
+	SET CC28='28'
+	SET CC29='29'
+	SET CC30='30'
+	SET CC31='31'
+	SET CC32='32'
+	SET CC33='33'
+	SET CC34='34'
+	SET CC35='35'
+	SET CC36='36'
+	SET CC37='37'
+	SET CC38='38'
+	SET CC39='39'
+	SET CC40='40'
+	SET CC41='41'
+	SET CC42='42'
+	SET CC43='43'
+	SET CC44='44'
+	SET CC45='45'
+	SET CC46='46'
+	SET CC47='47'
+	SET CC48='48'
+	SET CC49='49'
+	SET CC50='50'
+	SET CC51='51'
+	SET CC52='52'
+	SET CC53='53'
+	SET CC54='54'
+	SET CC55='55'
+	SET CC56='56'
+	SET CC57='57'
+	SET CC58='58'
+	SET CC59='59'
+	SET CC60='60'
+	SET CC61='61'
+	SET CC62='62'
+	SET CC63='63'
+	SET CC64='64'
+	SET CC65='65'
+	SET CC66='66'
+	SET CC67='67'
+	SET CC68='68'
+	SET CC69='69'
+	SET CC70='70'
+	SET CC71='71'
+	SET CC72='72'
+	SET CC73='73'
+	SET CC74='74'
+	SET CC75='75'
+	SET CC76='76'
+	SET CC77='77'
+	SET CC78='78'
+	SET CC79='79'
+	SET CC80='80'
+	SET CC81='81'
+	SET CC82='82'
+	SET CC83='83'
+	SET CC84='84'
+	SET CC85='85'
+	SET CC86='86'
+	SET CC87='87'
+	SET CC88='88'
+	SET CC89='89'
+	SET CC90='90'
+	SET CC91='91'
+	SET CC92='92'
+	SET CC93='93'
+	SET CC94='94'
+	SET CC95='95'
+	SET CC96='96'
+	SET CC97='97'
+	SET CC98='98'
+	SET CC99='99'
+
+	COLUMN 0179
+C1FX FIX(2) CC1
+	COLUMN 0279
+C2FX FIX(2) CC2
+	COLUMN 0379
+C3FX FIX(2) CC3
+	COLUMN 0479
+C4FX FIX(2) CC4
+	COLUMN 0579
+C5FX FIX(2) CC5
+	COLUMN 0679
+C6FX FIX(2) CC6
+	COLUMN 0779
+C7FX FIX(2) CC7
+	COLUMN 0879
+C8FX FIX(2) CC8
+	COLUMN 0979
+C9FX FIX(2) CC9
+	COLUMN 1079
+C10FX FIX(2) CC10
+	COLUMN 1179
+C11FX FIX(2) CC11
+	COLUMN 1279
+C12FX FIX(2) CC12
+	COLUMN 1379
+C13FX FIX(2) CC13
+	COLUMN 1479
+C14FX FIX(2) CC14
+	COLUMN 1579
+C15FX FIX(2) CC15
+	COLUMN 1679
+C16FX FIX(2) CC16
+	COLUMN 1779
+C17FX FIX(2) CC17
+	COLUMN 1879
+C18FX FIX(2) CC18
+	COLUMN 1979
+C19FX FIX(2) CC19
+	COLUMN 2079
+C20FX FIX(2) CC20
+	COLUMN 2179
+C21FX FIX(2) CC21
+	COLUMN 2279
+C22FX FIX(2) CC22
+	COLUMN 2379
+C23FX FIX(2) CC23
+	COLUMN 2479
+C24FX FIX(2) CC24
+	COLUMN 2579
+C25FX FIX(2) CC25
+	COLUMN 2679
+C26FX FIX(2) CC26
+	COLUMN 2779
+C27FX FIX(2) CC27
+	COLUMN 2879
+C28FX FIX(2) CC28
+	COLUMN 2979
+C29FX FIX(2) CC29
+	COLUMN 3079
+C30FX FIX(2) CC30
+	COLUMN 3179
+C31FX FIX(2) CC31
+	COLUMN 3279
+C32FX FIX(2) CC32
+	COLUMN 3379
+C33FX FIX(2) CC33
+	COLUMN 3479
+C34FX FIX(2) CC34
+	COLUMN 3579
+C35FX FIX(2) CC35
+	COLUMN 3679
+C36FX FIX(2) CC36
+	COLUMN 3779
+C37FX FIX(2) CC37
+	COLUMN 3879
+C38FX FIX(2) CC38
+	COLUMN 3979
+C39FX FIX(2) CC39
+	COLUMN 4079
+C40FX FIX(2) CC40
+	COLUMN 4179
+C41FX FIX(2) CC41
+	COLUMN 4279
+C42FX FIX(2) CC42
+	COLUMN 4379
+C43FX FIX(2) CC43
+	COLUMN 4479
+C44FX FIX(2) CC44
+	COLUMN 4579
+C45FX FIX(2) CC45
+	COLUMN 4679
+C46FX FIX(2) CC46
+	COLUMN 4779
+C47FX FIX(2) CC47
+	COLUMN 4879
+C48FX FIX(2) CC48
+	COLUMN 4979
+C49FX FIX(2) CC49
+	COLUMN 5079
+C50FX FIX(2) CC50
+	COLUMN 5179
+C51FX FIX(2) CC51
+	COLUMN 5279
+C52FX FIX(2) CC52
+	COLUMN 5379
+C53FX FIX(2) CC53
+	COLUMN 5479
+C54FX FIX(2) CC54
+	COLUMN 5579
+C55FX FIX(2) CC55
+	COLUMN 5679
+C56FX FIX(2) CC56
+	COLUMN 5779
+C57FX FIX(2) CC57
+	COLUMN 5879
+C58FX FIX(2) CC58
+	COLUMN 5979
+C59FX FIX(2) CC59
+	COLUMN 6079
+C60FX FIX(2) CC60
+	COLUMN 6179
+C61FX FIX(2) CC61
+	COLUMN 6279
+C62FX FIX(2) CC62
+	COLUMN 6379
+C63FX FIX(2) CC63
+	COLUMN 6479
+C64FX FIX(2) CC64
+	COLUMN 6579
+C65FX FIX(2) CC65
+	COLUMN 6679
+C66FX FIX(2) CC66
+	COLUMN 6779
+C67FX FIX(2) CC67
+	COLUMN 6879
+C68FX FIX(2) CC68
+	COLUMN 6979
+C69FX FIX(2) CC69
+	COLUMN 7079
+C70FX FIX(2) CC70
+	COLUMN 7179
+C71FX FIX(2) CC71
+	COLUMN 7279
+C72FX FIX(2) CC72
+	COLUMN 7379
+C73FX FIX(2) CC73
+	COLUMN 7479
+C74FX FIX(2) CC74
+	COLUMN 7579
+C75FX FIX(2) CC75
+	COLUMN 7679
+C76FX FIX(2) CC76
+	COLUMN 7779
+C77FX FIX(2) CC77
+	COLUMN 7879
+C78FX FIX(2) CC78
+	COLUMN 7979
+C79FX FIX(2) CC79
+	COLUMN 8079
+C80FX FIX(2) CC80
+	COLUMN 8179
+C81FX FIX(2) CC81
+	COLUMN 8279
+C82FX FIX(2) CC82
+	COLUMN 8379
+C83FX FIX(2) CC83
+	COLUMN 8479
+C84FX FIX(2) CC84
+	COLUMN 8579
+C85FX FIX(2) CC85
+	COLUMN 8679
+C86FX FIX(2) CC86
+	COLUMN 8779
+C87FX FIX(2) CC87
+	COLUMN 8879
+C88FX FIX(2) CC88
+	COLUMN 8979
+C89FX FIX(2) CC89
+	COLUMN 9079
+C90FX FIX(2) CC90
+	COLUMN 9179
+C91FX FIX(2) CC91
+	COLUMN 9279
+C92FX FIX(2) CC92
+	COLUMN 9379
+C93FX FIX(2) CC93
+	COLUMN 9479
+C94FX FIX(2) CC94
+	COLUMN 9579
+C95FX FIX(2) CC95
+	COLUMN 9679
+C96FX FIX(2) CC96
+	COLUMN 9779
+C97FX FIX(2) CC97
+	COLUMN 9879
+C98FX FIX(2) CC98
+	COLUMN 9979
+C99FX FIX(2) CC99
+
+COMMENT ================= STANDARD VARIABLES BEGIN ============================
+
+	COLUMN 0110
+	SET DAT = DATE
+DATEFIX	FIX(11) 'date='+DAT
+
+	UNSET INTVR
+INTVR	DUMMYASK 'Intvr. name in a dummy so it gets inserted in the .tex file'
+		RESP CODED(9)
+
+	SET INTVR = INTNAME
+INTFIX	FIX(13) 'intvr='+INTVR
+
+	SET TIM1 = TIMEOFDAY
+TIM1FIX	FIX(16) 'timestart='+TIM1 FORCE(2)
+
+	CALLFUNC('datetime', STARTINT)
+INTSTART FIX(20) 'starttime='+STARTINT FORCE(2)
+
+COMMENT ================= STANDARD VARIABLES END ==============================
+
+
+COMMENT ================= SAMPLE INFORMATION BEGIN ============================
+
+COMMENT GET KEY AND FIX INTO DATA
+	SET SMSVAR = 'key'
+	SET KEYIN  = ''
+	CALLFUNC('getsmvar',SMSVAR,KEYIN)
+KEYFIX  FIX(14) 'key='+KEYIN FORCE( 1 )
+
+COMMENT GET AREA AND FIX INTO DATA
+	SET SMSVAR = 'area'
+	SET AREAIN = ''
+	CALLFUNC('getsmvar',SMSVAR,AREAIN)
+AREAFIX  FIX(9) 'phone='+AREAIN FORCE( 1 )
+
+COMMENT GET EXCH AND FIX INTO DATA
+	SET SMSVAR = 'exch'
+	SET EXCHIN = ''
+	CALLFUNC('getsmvar',SMSVAR,EXCHIN)
+EXCHFIX  FIX(3) EXCHIN FORCE( 1 )
+
+COMMENT GET PHONE AND FIX INTO DATA
+	SET SMSVAR = 'phone'
+	SET PHONEIN = ''
+	CALLFUNC('getsmvar',SMSVAR,PHONEIN)
+PHONEFIX  FIX(4) PHONEIN FORCE( 1 )
+
+COMMENT =======================================================================
+COMMENT ================= SAMPLE INFORMATION END ==============================
+COMMENT =======================================================================
+
+
+
+COMMENT =======================================================================
+COMMENT ================= GENERATED CODE FOR SAMPLE INFORMATION BEGIN =========
+COMMENT =======================================================================
+COMMENT ================= Generated Code for Sample Information BEGIN ============================
+COMMENT Get name and fix into data
+  set smsvar = 'name'
+  set namein= ''
+  callfunc('getsmvar',smsvar,namein)
+namefix  fix(50) namein force( 1 )
+        
+COMMENT Get dir and fix into data
+  set smsvar = 'dir'
+  set dirin= ''
+  callfunc('getsmvar',smsvar,dirin)
+dirfix  fix(50) dirin force( 1 )
+        
+COMMENT Get citi and fix into data
+  set smsvar = 'citi'
+  set citiin= ''
+  callfunc('getsmvar',smsvar,citiin)
+citifix  fix(50) citiin force( 1 )
+        
+COMMENT Get st and fix into data
+  set smsvar = 'st'
+  set stin= ''
+  callfunc('getsmvar',smsvar,stin)
+stfix  fix(50) stin force( 1 )
+        
+COMMENT Get conty and fix into data
+  set smsvar = 'conty'
+  set contyin= ''
+  callfunc('getsmvar',smsvar,contyin)
+contyfix  fix(50) contyin force( 1 )
+        
+COMMENT Get timz and fix into data
+  set smsvar = 'timz'
+  set timzin= ''
+  callfunc('getsmvar',smsvar,timzin)
+timzfix  fix(50) timzin force( 1 )
+        
+COMMENT Get stsw and fix into data
+  set smsvar = 'stsw'
+  set stswin= ''
+  callfunc('getsmvar',smsvar,stswin)
+stswfix  fix(50) stswin force( 1 )
+        
+COMMENT Get zipc and fix into data
+  set smsvar = 'zipc'
+  set zipcin= 0
+  callfunc('getsmvar',smsvar,zipcin)
+zipcfix  fix(5) zipcin force( 1 )
+        
+COMMENT Get fip and fix into data
+  set smsvar = 'fip'
+  set fipin= 0
+  callfunc('getsmvar',smsvar,fipin)
+fipfix  fix(4) fipin force( 1 )
+        
+COMMENT Get tz and fix into data
+  set smsvar = 'tz'
+  set tzin= 0
+  callfunc('getsmvar',smsvar,tzin)
+tzfix  fix(1) tzin force( 1 )
+        
+COMMENT Get ivar1 and fix into data
+  set smsvar = 'ivar1'
+  set ivar1in= 0
+  callfunc('getsmvar',smsvar,ivar1in)
+ivar1fix  fix(9) ivar1in force( 1 )
+        
+COMMENT Get svar1 and fix into data
+  set smsvar = 'svar1'
+  set svar1in= ''
+  callfunc('getsmvar',smsvar,svar1in)
+svar1fix  fix(50) svar1in force( 1 )
+        
+COMMENT Get ivar2 and fix into data
+  set smsvar = 'ivar2'
+  set ivar2in= 0
+  callfunc('getsmvar',smsvar,ivar2in)
+ivar2fix  fix(9) ivar2in force( 1 )
+        
+COMMENT Get svar2 and fix into data
+  set smsvar = 'svar2'
+  set svar2in= ''
+  callfunc('getsmvar',smsvar,svar2in)
+svar2fix  fix(50) svar2in force( 1 )
+        
+COMMENT Get sample and fix into data
+  set smsvar = 'samp'
+  set sampin= 0
+  callfunc('getsmvar',smsvar,sampin)
+sampfix  fix(1) sampin force( 1 )
+        
+COMMENT Get Telephone Number and fix into data
+  set smsvar = 'telnumb'
+  set telnumin= ''
+  callfunc('getsmvar',smsvar,telnumin)
+telnumfx  fix(10) telnumin force( 1 )
+COMMENT ================= Generated Code for Sample Information END ==============================
+
+COMMENT =======================================================================
+COMMENT ================= GENERATED CODE FOR SAMPLE INFORMATION END ===========
+COMMENT =======================================================================
+
+
+
+COMMENT =======================================================================
+COMMENT ================== LISTS DEFINITIONS BEGIN ============================
+COMMENT =======================================================================
+
+LSYN	DEFINE
+	'}0Yes}1Si'/
+	'}0No}1No'
+
+COMMENT =======================================================================
+COMMENT ================== LISTS DEFINITIONS END ==============================
+COMMENT =======================================================================
+
+COMMENT =======================================================================
+COMMENT ============================= SCREENER BEGIN ==========================
+COMMENT =======================================================================
+
+	CALLFUNC( 'valstring', RESPID, KEYIN )
+COMMENT	CALLFUNC( 'setdataser', RESPID )
+	CALLFUNC( 'setcols', 1 )
+
+PROT PROTECT 'Phone: '+ON+'('+AREAIN+')'+EXCHIN+'-'+PHONEIN+OFF+'  RespID: '+ON+RESPID+OFF+'@'
+
+PRESCR CONTINUE
+
+
+COMMENT ================================    INTRO    ===========================
+
+QINTRO	ASK '
+Hello, May I please speak to the homeowner?@
+Hi ('+ON+namein+OFF+'), This is (name from Company Name), I"m calling on behalf
+of a team of trusted realtors in San Diego.
+@'
+	RESP SP 
+		'YES, CONTINUE' /
+		'NOT AVAILABLE, ARRANGE CALLBACK' /
+		'NO, INITIAL REFUSAL. TERMINATE'
+
+	IF(TT){ SET QINTRO = 1 }
+
+	UNSET iBitQInt
+	SET iBitQInt = NBIT(QINTRO)
+
+	IF(iBitQInt = 2){ GOTOSMS }
+	IF(iBitQInt = 3){
+		SET COMP = 19
+		SET QTIPCODE = 75
+		GOTO TERM
+	}
+
+
+COMMENT =======================================================================
+COMMENT ============================= SCREENER END ============================
+COMMENT =======================================================================
+
+COMMENT ============================= QUITOK ==================================
+
+QUITOK	DUMMYASK '
+(INTERVIEWER: It is now ok to use "quit" if necessary@@'
+	RESP SP 'CONTINUE' FORCE( 3 )
+	SET QUITOK = 1
+
+COMMENT =========================== END QUITOK ================================
+
+COMMENT =======================================================================
+COMMENT ============================= MAIN QRE BEGIN ==========================
+COMMENT =======================================================================
+
+PREMAIN CONTINUE
+
+
+COMMENT ================================    PREQ1    ==========================
+
+PREQ1	ASK '
+The reason for my call is that we have buyers currently looking for homes in your
+ neighborhood. In fact, some have indicated they would gladly pay as much as 20%
+ above asking prices. Would you consider selling your home if you had someone
+ lined up to buy it? @
+[INTERVIEWER: wait and listen]
+@'
+	RESP SP 
+		'YES' /
+		'NO'
+
+COMMENT ================================    PREQ2    ==========================
+
+PREQ2	ASK '
+I know choosing to sell your home is a big decision, so I would like to connect
+ you with a trusted real estate agent to discuss your thoughts and concerns.
+ I can connect you now...
+@'
+	RESP SP 
+		'Yes, interested connect now'/
+		'Yes, interested but call back'/
+		'No, not interested in selling now, callback in 3- 6 months'/
+		'No, not interested in selling now, callback in 6+ months '/
+		'No, not interested in selling my house'
+
+	UNSET iBitPQ2
+	SET iBitPQ2 = NBIT(PREQ2)
+
+	IF(iBitPQ2 = 1){ GOTO PREQ1A }
+	IF(iBitPQ2 = 2){ GOTO PREQ2AN }
+	IF(iBitPQ2 = 3){ GOTO PREQ3A }
+	IF(iBitPQ2 = 4){ GOTO PREQ3A }
+	IF(iBitPQ2 = 5){ GOTO PREQ4A }
+
+
+COMMENT ================================    Q1A    ==========================
+
+PREQ1A CONTINUE
+
+Q1A	ASK '
+Great, can I please get your name before I connect you...
+@[*INTERVIEWER: capture name]@
+Thanks for taking the time to speak with me, I will connect you now
+@'
+	RESP CODED
+
+QPQ1AFIX FIX( 70 ) Q1A
+	GOTO PREDEMOS
+
+COMMENT ================================    Q2ANAME    ==========================
+
+PREQ2AN CONTINUE
+
+Q2ANAME	ASK '
+Great, when would be a good time to call back 
+@[*INTERVIEWER: capture NAME).
+@'
+	RESP CODED
+
+Q2ANFIX FIX( 70 ) Q2ANAME
+
+COMMENT ================================    Q2ADATE    ==========================
+
+PREQ2AD CONTINUE
+
+Q2ADATE	ASK '
+@[*INTERVIEWER: capture DATE).
+@'
+	RESP CODED
+
+Q2ADFIX FIX( 70 ) Q2ADATE
+
+COMMENT ================================    Q2ATIME    ==========================
+
+PREQ2AT CONTINUE
+
+Q2ATIME	ASK '
+@[*INTERVIEWER: capture TIME).@
+ Thanks for taking the time to speak with me. Have a great day.
+@'
+	RESP CODED
+
+Q2ATFIX FIX( 70 ) Q2ATIME
+	GOTO PREDEMOS
+
+
+COMMENT ================================    Q3A    ==========================
+
+PREQ3A CONTINUE
+
+Q3A	ASK '
+I understand, we can check back with you in a few months. @
+[*INTERVIEWER:capture name].@
+@Thanks for taking the time to speak with me. Have a great day.
+@'
+	RESP CODED
+Q3AFIX FIX( 70 ) Q3A
+
+	GOTO PREDEMOS
+
+COMMENT ================================    Q4A    ==========================
+
+PREQ4A CONTINUE
+
+Q4A	DISPLAY '
+I understand, thanks for taking the time to speak with me. Have a great day.@'
+	PAUSE
+
+			SET COMP = 3
+			SET QTIPCODE = 61
+			GOTO TERM
+
+
+COMMENT =======================================================================
+COMMENT ============================= MAIN QRE END ============================
+COMMENT =======================================================================
+
+
+COMMENT =======================================================================
+COMMENT ============================= DEMOGRAPHICS ============================
+COMMENT =======================================================================
+
+PREDEMOS CONTINUE
+
+COMMENT ================================    QEND    ===========================
+LSCOMP	DEFINE
+	'Great Job!, keep up the good work'/
+	'Make every call count, outstanding work!'/
+	'True BrandEmbassador, Congrats!' 
+
+LSQOTH DEFINE
+	'Persistence; Means strongly persuading yourself not to quit but to push through the end'/
+	'Once we boost our self-confidence, the magic starts happening'/
+	'Talent; Means nothing without hard work, dedication and winning mindset'/
+	'We have limited time each day, make sure to use every minute wisely and toward our goals'
+
+COMMENT =======================================================================
+COMMENT ========================= DEMOGRAPHICS END ============================
+COMMENT =======================================================================
+
+PRECOMP	CONTINUE
+
+	SET COMP=1
+	SET QTIPCODE=1
+	GOTO PRETHX
+
+COMMENT ============================= TERM ====================================
+
+PRETERM	CONTINUE
+
+TERM	DISPLAY '
+I understand, thanks for taking the time to speak with me. Have a great day.@@'
+	PAUSE
+	FOR sVarQOTH = LSQOTH RAN
+	DISPLAY 'For you Interviewer:@@'+sVarQOTH+' <3'
+	PAUSE
+	GOTO POSTDISP
+	NEXT
+POSTDISP CONTINUE
+	UNSET BITCOMP
+	SET BITCOMP = NBIT(COMP)
+
+	SET SMSVAR = 'ivar2'
+	SET VAR2 = BITCOMP
+	CALLFUNC('putsmvar',SMSVAR,VAR2)
+
+	SET SMSVAR = 'tempcode'
+	CALLFUNC('putsmvar',SMSVAR,QTIPCODE)
+	SIGNAL 2
+
+COMMENT ============================= QUITEX ==================================
+
+PREQUIT	CONTINUE
+
+QUITEX DISPLAY '
+----------------@
+***   QUIT   ***@
+----------------@@'
+
+	PAUSE
+	UNSET BQUITOK
+	SET BQUITOK = NBIT(QUITOK)
+
+	IF ( BQUITOK = 1 ) { 
+		SET COMP=18
+		SET QTIPCODE=17
+	} ELSE {
+		SET COMP=19
+		SET QTIPCODE=75 
+	}
+
+	SET SMSVAR = 'tempcode'
+	CALLFUNC('putsmvar',SMSVAR,QTIPCODE)
+	SIGNAL 2
+
+COMMENT ================================ THX ==================================
+
+PRETHX	CONTINUE
+
+THX	DISPLAY '
+@@
+(INTERVIEWER HANG UP PHONE)@'
+	PAUSE
+
+	FOR sVarQCom = LSCOMP RAN
+		DISPLAY 'For you Interviewer:@@'+sVarQCom+' <3'
+			PAUSE
+			GOTO POSTCOMP
+	NEXT
+POSTCOMP CONTINUE	
+
+QUALITY	ASK '
+                      [+*so+]QUALITY  CERTIFICATION[+*se+]@
+
+I hereby certify that this interview was conducted as follows:@@
+
+*  In accordance to the study instructions and questionnaire design.@
+*  In accordance to company quality standards.@
+*  In a professional and courteous manner.@
+*  No misleading or false information has been entered into this survey.@@
+
+I understand as a representative of ASC that I am to provide high quality 
+interviewing while remaining professional and courteous at all times.  
+Additionally, I understand that my interviews will be reviewed and verified on 
+an individual basis.@@
+
+INTERVIEW CONDUCTED AND CERTIFIED BY: (Interviewer enter your full name):'
+	RESP CODED NODATA
+
+QUALFIX FIX( 70 ) QUALITY FORCE( 2 )
+
+	SET SMSVAR = 'tempcode'
+	CALLFUNC('putsmvar',SMSVAR,QTIPCODE)
+
+	SET TIM2=TIMEOFDAY
+TIM2FIX	FIX(16) 'timeend='+TIM2 FORCE(2)
+
+	CALLFUNC('datetime', ENDIN)
+ENDTIME  FIX(20) 'endtime='+ENDIN FORCE(2)
+
+	CALLFUNC('datetext',STARTINT, INIDATE)
+	CALLFUNC('datetext',ENDIN, FINDATE)
+
+INIDATE  FIX(40) INIDATE FORCE(2)
+FINDATE  FIX(40) FINDATE FORCE(2)
+
+	SET INTLEN = ENDIN - STARTINT
+LENGTH  FIX(12) 'length='+INTLEN FORCE(2) 
+
+COMMENT ============================= QEND ====================================
+
+QEND CONTINUE
+	END
