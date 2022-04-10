@@ -487,13 +487,19 @@ from the sponsor of this survey, but their name has been
 withheld prior to your answering the following questions.
 
 Your time and answers are very import,'
-@*************************************************************************@
+
 	RESP SP 
 		'YES, CONTINUE' /
 		'NOT AVAILABLE, ARRANGE CALLBACK' /
 		'NO, INITIAL REFUSAL. TERMINATE'
 
+	UNSET iBitQintro
+	SET iBitQintro = NBIT(QINTRO)
 	
+	IF(iBitQintro > 1)
+	{
+		GOTO PRETERM
+	}
 
 COMMENT =======================================================================
 COMMENT ============================= SCREENER END ============================
@@ -530,11 +536,25 @@ Have you visited an Indian Casino in the past 6 months?
 
 COMMENT  ================================  Q1b  ================================
 
+LSQ1b	DEFINE
+		'1'/
+		'2'/
+		'3'
+
+	FOR ivar1b = LSQ1b RAN
+
 Q1b ASK '
 If Yes, please name those you have visited and describe
-each one with one or two words.
+each one with one or two words. 
+
+*Capture three casinos.
+
+Casino number'+ON+ivar1b+OFF+'.
 @'
     RESP CODED
+
+	UNSERT iBitQ1
+	SET iBitQ1 = NBIT(Q1b)
 
 COMMENT  ================================  Q1c  ================================
 
@@ -546,7 +566,7 @@ Wich is your Favorite and Why?
     }
     ELSE
     {
-        goto PRETERM
+        GOTO PRETERM
     }
 
 COMMENT  ================================  Q2  ================================
@@ -622,13 +642,44 @@ Casino to go to?
     'VERY INFLUENTIAL'
 
 COMMENT  ================================  Q8  ================================
+LSQ8	DEFINE
+		'TRUE'/
+		'FALSE'
 
-Q8  ASK '
+Q8  DISPLAY '
 When you think of the rewards programs at Indian Casinos, how would you
 rate each of the following statements?
 @'
 
-COMMENT *PENDIENTE
+COMMENT  ================================  Q8a  ================================
+
+Q8a ASK '
+Theres is not much difference between them
+@'
+	RESP SP Q8a
+
+COMMENT  ================================  Q8b  ================================
+
+Q8b ASK '
+The rewards from casino rewards programs are nice, but they are all very similar
+@'
+	RESP SP Q8a
+
+COMMENT  ================================  Q8c  ================================
+
+Q8c ASK '
+If I could play for rewards customized to what I really want, that would
+influence where I go
+@'
+	RESP SP Q8a
+
+COMMENT  ================================  Q8d  ================================
+
+Q8d ASK '
+Being a member of an Indian Casino rewards program encourages me to play more
+and stay longer
+@'
+	RESP SP Q8a
 
 COMMENT  ================================  Q9  ================================
 
@@ -669,20 +720,82 @@ How important are the following when making your decision to go to a
 specific Indian Casino?
 @'
 
-LSQRES  DEFINE 
+	PAUSE
+
+LSQ10  DEFINE 
         'Not Important'/
         'Somewhat Important'/
         'Very Important'
-    
-COMMENT *Hacer con For
+
+COMMENT  ================================  Q10a  ================================
+
+Q10a ASK '
+Other gamers in my age group
+@'
+	RESP SP LSQ10
+	
+COMMENT  ================================  Q10b  ================================
+
+Q10b ASK '
+Other gamers from my community/neighborhood:
+@'
+	RESP SP LSQ10
+
+COMMENT  ================================  Q10c  ================================
+
+Q10a ASK '
+Othter gamers, and casino staff, speak my language:
+@'
+	RESP SP LSQ10
 
 COMMENT  ================================  Q11  ================================
 
-COMMENT *HACER FOR
+LSQ11	DEFINE
+		'Current promotions'/
+		'Entertainment'/
+		'Food & beverage'/
+		'Where friends go'/
+		'The rewards I get, or want'/
+		'Specify games/favorite machines'/
+		'Convenience'/
+		'The way I am treated by staff'
+
+		FOR ivarQ11 = LSQ11 RAN
+
+Q11	DISPLAY '
+Please rank the importance of each of the following when making your decision
+about going to an Indian Casino, if you have choices, which one?
+@
+'+ON+ivarQ11+OFF+'@
+@
+@
+@ 1 = Not very important
+@ 5 = Very important
+@ 	A			B			C			D			F
+@...1...........2...........3...........4...........5@'
+	RESP NUM 1 TO 5
+	NEXT
 
 COMMENT  ================================  Q12  ================================
 
-COMMENT *HACER FOR
+COMMENT En vez de agregar los nombres de los casinos capturados
+COMMENT puede ser sustuituido por el orden en que se agregaron 
+COMMENT numericamente.
+
+	FOR ivar12 = iBitQ1
+
+Q12 ASK '
+For ther casinos you noted in Question 1, please indicate how well each casino
+meets what is important to you (your answers to Q10 & Q11) and provides the best
+overall experiencie?
+@
+@Casino '+ON+ivar12+OFF+'
+@
+@	Minimal			Somewhat				Best
+@......1.......2........3..........4..........5
+@'
+	RESP NUM 1 to 5
+	NEXT
 
 COMMENT  ================================  Q13  ================================
 
@@ -727,7 +840,72 @@ trip in the PAST THREE (3) YEARS? (Select all that apply)
     'Tombstone'/
     'Scottsdale'/
     'Tucson'/
-    'Phoenix'
+    'Phoenix'/
+	'San Diego'/
+	'Tijuana'/
+	'Mexicali'/
+	'NONE OF THESE'
+
+COMMENT  ================================  Q16  ================================
+
+Q16 ASK '
+Wich of the following destinations (if any) are you interested in visiting on a
+leisure trip in the NEXT THREE (3) YEARS?
+@'
+	RESP MP
+	'Grand Canyon'/
+    'Sedona'/
+    'Yuma'/
+    'Tombstone'/
+    'Scottsdale'/
+    'Tucson'/
+    'Phoenix'/
+	'San Diego'/
+	'Tijuana'/
+	'Mexicali'/
+	'NONE OF THESE'
+
+COMMENT  ================================  Q17  ================================
+
+Q17 ASK '
+How familiar are yout with YUMA as a place to visit for leisure travel
+(vacations, weekend getaways, etc.)?
+@'
+	RESP SP
+	'Very familiar'/
+	'Familiar'/
+	'Neutral (neither familiar nor unfamiliar)'/
+	'Unfamiliar'
+
+COMMENT  ================================  Q18  ================================
+
+Q18 ASK '
+In the NEXT THREE (3) YEARS, how interested are you in visiting YUMA for leisure
+reasons (vacation, weekend, getaway, etc.)?
+@'
+	RESP SP
+	'Very interested'/
+	'Interested'/
+	'Neutral(neither interested nor uninterested)'/
+	'Uninterested'/
+	'Very uninterested'
+
+COMMENT  ================================  Q19  ================================
+
+Q19 ASK '
+Thinking of YUMA specifically as a place to visit, how would you describe it?
+Please write in the FIRST THREE WORDS OR PHRASES that come to mind.
+@'
+	RESP CODED
+
+COMMENT  ================================  Q20  ================================
+
+Q20 ASK '
+What casinos do you know?
+@'
+	COMMENT RESP MP  *LISTA DE Casinos
+
+GOTO PRETERM 
 COMMENT =======================================================================
 COMMENT ============================= MAIN QRE END ============================
 COMMENT =======================================================================

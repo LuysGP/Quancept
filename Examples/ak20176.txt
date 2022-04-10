@@ -1,0 +1,3711 @@
+COMMENT =======================================================================
+COMMENT
+COMMENT                 AMERICAS SURVEY COMPANY
+COMMENT
+COMMENT                  AUTHOR: ASC PROGRAMMING DEPARTMENT
+COMMENT                   EMAIL: programmers@americas-survey.com
+COMMENT
+COMMENT                   STUDY: 
+COMMENT  PROGRAMMING START DATE: 
+COMMENT        FIELD START DATE: 
+COMMENT
+COMMENT =======================================================================
+
+COMMENT -----------------------------------------------------------------------
+COMMENT RESPID = KEY
+COMMENT ALL SAMPLE MUST HAVE A SEQUENTIALLY GENERATED KEY,  THE KEY WILL ALSO
+COMMENT BE SET AS THE RESPONDENT ID.  THIS GREATLY SIMPLIFIES LOOKING THROUGH THE
+COMMENT DATA AND ACCOUNTS.SMS SINCE BOTH IDENTIFIERS ARE THE SAME
+COMMENT -----------------------------------------------------------------------
+
+COMMENT -----------------------------------------------------------------------
+COMMENT SAMPLE VARIABLES
+COMMENT ALL SAMPLE VARIABLES MUST CONTAIN AN ADDITIONAL STRING INDICATING THE 
+COMMENT THE SAMPLE VARIABLE.  PLEASE REFER TO THE FRAGMENT OF CODE THAT STORES
+COMMENT THE KEY INTO THE DATA.
+COMMENT -----------------------------------------------------------------------
+
+
+COMMENT -----------------------------------------------------------------------
+COMMENT FORCE USAGE
+COMMENT 
+COMMENT FORCE(1):       ALL SAMPLE VARIABLES
+COMMENT FORCE(2):       FIXED OPEN ENDED DATA
+COMMENT FORCE(3):       ASC INTERNAL DATA
+COMMENT FORCE(4+):      QUESTIONS THAT ARE ADDED POST FIELD
+COMMENT
+COMMENT -----------------------------------------------------------------------
+
+	MAPOTHZERO
+	ONRESP 'quit' GO PREQUIT
+	SET ON  = '[+*so+]'
+	SET OFF = '[+*se+]'
+	SET TT  = TESTINGRUN
+	SET PROJECT = qcproject
+	SET TCHK = SUBSTR(PROJECT,8,1)
+	UNSET ISTEST
+	IF(TCHK = 't') { SET ISTEST  = 1 } ELSE { SET ISTEST  = 0 }
+
+COMMENT =================  RELEASE NUMBER ====================
+
+	COLUMN 177
+	UNSET RELFIX
+
+RELFIX  DUMMYASK 'Store the release number'
+	RESP NUM 1 TO 99
+
+	SET RELFIX = 4
+
+COMMENT =================  COMP ====================
+
+	COLUMN 0108
+COMP	DUMMYASK 'RECORD INTERVIEW RESULT'
+		RESP SP 
+			'Complete'/
+			'Not complete'/
+			'Not Matsu Borough Resident'/
+			'Not residential telephone'/
+			'DK/REF zipcode'/
+			'No valid Zipcode'/
+			'Closed Zipcode'/
+			'8 -Term 06'/
+			'9 -Term 07'/
+			'10-Term 08'/
+			'11-Term 09'/
+			'12-Term 10'/
+			'13-Term 11'/
+			'14-Term 12'/
+			'15-Term 13'/
+			'16-Term 14'/
+			'17-OVERQUOTA'/
+			'18-MAIN QRE QUIT' /
+			'19-SCREENER QUIT(REFUSED)'
+
+	SET COMP=2
+
+	SET CC1=' 1'
+	SET CC2=' 2'
+	SET CC3=' 3'
+	SET CC4=' 4'
+	SET CC5=' 5'
+	SET CC6=' 6'
+	SET CC7=' 7'
+	SET CC8=' 8'
+	SET CC9=' 9'
+	SET CC10='10'
+	SET CC11='11'
+	SET CC12='12'
+	SET CC13='13'
+	SET CC14='14'
+	SET CC15='15'
+	SET CC16='16'
+	SET CC17='17'
+	SET CC18='18'
+	SET CC19='19'
+	SET CC20='20'
+	SET CC21='21'
+	SET CC22='22'
+	SET CC23='23'
+	SET CC24='24'
+	SET CC25='25'
+	SET CC26='26'
+	SET CC27='27'
+	SET CC28='28'
+	SET CC29='29'
+	SET CC30='30'
+	SET CC31='31'
+	SET CC32='32'
+	SET CC33='33'
+	SET CC34='34'
+	SET CC35='35'
+	SET CC36='36'
+	SET CC37='37'
+	SET CC38='38'
+	SET CC39='39'
+	SET CC40='40'
+	SET CC41='41'
+	SET CC42='42'
+	SET CC43='43'
+	SET CC44='44'
+	SET CC45='45'
+	SET CC46='46'
+	SET CC47='47'
+	SET CC48='48'
+	SET CC49='49'
+	SET CC50='50'
+	SET CC51='51'
+	SET CC52='52'
+	SET CC53='53'
+	SET CC54='54'
+	SET CC55='55'
+	SET CC56='56'
+	SET CC57='57'
+	SET CC58='58'
+	SET CC59='59'
+	SET CC60='60'
+	SET CC61='61'
+	SET CC62='62'
+	SET CC63='63'
+	SET CC64='64'
+	SET CC65='65'
+	SET CC66='66'
+	SET CC67='67'
+	SET CC68='68'
+	SET CC69='69'
+	SET CC70='70'
+	SET CC71='71'
+	SET CC72='72'
+	SET CC73='73'
+	SET CC74='74'
+	SET CC75='75'
+	SET CC76='76'
+	SET CC77='77'
+	SET CC78='78'
+	SET CC79='79'
+	SET CC80='80'
+	SET CC81='81'
+	SET CC82='82'
+	SET CC83='83'
+	SET CC84='84'
+	SET CC85='85'
+	SET CC86='86'
+	SET CC87='87'
+	SET CC88='88'
+	SET CC89='89'
+	SET CC90='90'
+	SET CC91='91'
+	SET CC92='92'
+	SET CC93='93'
+	SET CC94='94'
+	SET CC95='95'
+	SET CC96='96'
+	SET CC97='97'
+	SET CC98='98'
+	SET CC99='99'
+
+	COLUMN 0179
+C1FX FIX(2) CC1
+	COLUMN 0279
+C2FX FIX(2) CC2
+	COLUMN 0379
+C3FX FIX(2) CC3
+	COLUMN 0479
+C4FX FIX(2) CC4
+	COLUMN 0579
+C5FX FIX(2) CC5
+	COLUMN 0679
+C6FX FIX(2) CC6
+	COLUMN 0779
+C7FX FIX(2) CC7
+	COLUMN 0879
+C8FX FIX(2) CC8
+	COLUMN 0979
+C9FX FIX(2) CC9
+	COLUMN 1079
+C10FX FIX(2) CC10
+	COLUMN 1179
+C11FX FIX(2) CC11
+	COLUMN 1279
+C12FX FIX(2) CC12
+	COLUMN 1379
+C13FX FIX(2) CC13
+	COLUMN 1479
+C14FX FIX(2) CC14
+	COLUMN 1579
+C15FX FIX(2) CC15
+	COLUMN 1679
+C16FX FIX(2) CC16
+	COLUMN 1779
+C17FX FIX(2) CC17
+	COLUMN 1879
+C18FX FIX(2) CC18
+	COLUMN 1979
+C19FX FIX(2) CC19
+	COLUMN 2079
+C20FX FIX(2) CC20
+	COLUMN 2179
+C21FX FIX(2) CC21
+	COLUMN 2279
+C22FX FIX(2) CC22
+	COLUMN 2379
+C23FX FIX(2) CC23
+	COLUMN 2479
+C24FX FIX(2) CC24
+	COLUMN 2579
+C25FX FIX(2) CC25
+	COLUMN 2679
+C26FX FIX(2) CC26
+	COLUMN 2779
+C27FX FIX(2) CC27
+	COLUMN 2879
+C28FX FIX(2) CC28
+	COLUMN 2979
+C29FX FIX(2) CC29
+	COLUMN 3079
+C30FX FIX(2) CC30
+	COLUMN 3179
+C31FX FIX(2) CC31
+	COLUMN 3279
+C32FX FIX(2) CC32
+	COLUMN 3379
+C33FX FIX(2) CC33
+	COLUMN 3479
+C34FX FIX(2) CC34
+	COLUMN 3579
+C35FX FIX(2) CC35
+	COLUMN 3679
+C36FX FIX(2) CC36
+	COLUMN 3779
+C37FX FIX(2) CC37
+	COLUMN 3879
+C38FX FIX(2) CC38
+	COLUMN 3979
+C39FX FIX(2) CC39
+	COLUMN 4079
+C40FX FIX(2) CC40
+	COLUMN 4179
+C41FX FIX(2) CC41
+	COLUMN 4279
+C42FX FIX(2) CC42
+	COLUMN 4379
+C43FX FIX(2) CC43
+	COLUMN 4479
+C44FX FIX(2) CC44
+	COLUMN 4579
+C45FX FIX(2) CC45
+	COLUMN 4679
+C46FX FIX(2) CC46
+	COLUMN 4779
+C47FX FIX(2) CC47
+	COLUMN 4879
+C48FX FIX(2) CC48
+	COLUMN 4979
+C49FX FIX(2) CC49
+	COLUMN 5079
+C50FX FIX(2) CC50
+	COLUMN 5179
+C51FX FIX(2) CC51
+	COLUMN 5279
+C52FX FIX(2) CC52
+	COLUMN 5379
+C53FX FIX(2) CC53
+	COLUMN 5479
+C54FX FIX(2) CC54
+	COLUMN 5579
+C55FX FIX(2) CC55
+	COLUMN 5679
+C56FX FIX(2) CC56
+	COLUMN 5779
+C57FX FIX(2) CC57
+	COLUMN 5879
+C58FX FIX(2) CC58
+	COLUMN 5979
+C59FX FIX(2) CC59
+	COLUMN 6079
+C60FX FIX(2) CC60
+	COLUMN 6179
+C61FX FIX(2) CC61
+	COLUMN 6279
+C62FX FIX(2) CC62
+	COLUMN 6379
+C63FX FIX(2) CC63
+	COLUMN 6479
+C64FX FIX(2) CC64
+	COLUMN 6579
+C65FX FIX(2) CC65
+	COLUMN 6679
+C66FX FIX(2) CC66
+	COLUMN 6779
+C67FX FIX(2) CC67
+	COLUMN 6879
+C68FX FIX(2) CC68
+	COLUMN 6979
+C69FX FIX(2) CC69
+	COLUMN 7079
+C70FX FIX(2) CC70
+	COLUMN 7179
+C71FX FIX(2) CC71
+	COLUMN 7279
+C72FX FIX(2) CC72
+	COLUMN 7379
+C73FX FIX(2) CC73
+	COLUMN 7479
+C74FX FIX(2) CC74
+	COLUMN 7579
+C75FX FIX(2) CC75
+	COLUMN 7679
+C76FX FIX(2) CC76
+	COLUMN 7779
+C77FX FIX(2) CC77
+	COLUMN 7879
+C78FX FIX(2) CC78
+	COLUMN 7979
+C79FX FIX(2) CC79
+	COLUMN 8079
+C80FX FIX(2) CC80
+	COLUMN 8179
+C81FX FIX(2) CC81
+	COLUMN 8279
+C82FX FIX(2) CC82
+	COLUMN 8379
+C83FX FIX(2) CC83
+	COLUMN 8479
+C84FX FIX(2) CC84
+	COLUMN 8579
+C85FX FIX(2) CC85
+	COLUMN 8679
+C86FX FIX(2) CC86
+	COLUMN 8779
+C87FX FIX(2) CC87
+	COLUMN 8879
+C88FX FIX(2) CC88
+	COLUMN 8979
+C89FX FIX(2) CC89
+	COLUMN 9079
+C90FX FIX(2) CC90
+	COLUMN 9179
+C91FX FIX(2) CC91
+	COLUMN 9279
+C92FX FIX(2) CC92
+	COLUMN 9379
+C93FX FIX(2) CC93
+	COLUMN 9479
+C94FX FIX(2) CC94
+	COLUMN 9579
+C95FX FIX(2) CC95
+	COLUMN 9679
+C96FX FIX(2) CC96
+	COLUMN 9779
+C97FX FIX(2) CC97
+	COLUMN 9879
+C98FX FIX(2) CC98
+	COLUMN 9979
+C99FX FIX(2) CC99
+
+COMMENT ================= STANDARD VARIABLES BEGIN ============================
+
+	COLUMN 0110
+	SET DAT = DATE
+DATEFIX	FIX(11) 'date='+DAT
+
+	UNSET INTVR
+INTVR	DUMMYASK 'Intvr. name in a dummy so it gets inserted in the .tex file'
+		RESP CODED(9)
+
+	SET INTVR = INTNAME
+INTFIX	FIX(12) 'intvr='+INTVR
+
+	SET TIM1 = TIMEOFDAY
+TIM1FIX	FIX(16) 'timestart='+TIM1 FORCE(2)
+
+	CALLFUNC('datetime', STARTINT)
+INTSTART FIX(20) 'starttime='+STARTINT FORCE(2)
+
+COMMENT ================= STANDARD VARIABLES END ==============================
+
+
+COMMENT ================= SAMPLE INFORMATION BEGIN ============================
+
+COMMENT GET KEY AND FIX INTO DATA
+	SET SMSVAR = 'key'
+	SET KEYIN  = ''
+	CALLFUNC('getsmvar',SMSVAR,KEYIN)
+KEYFIX  FIX(14) 'key='+KEYIN FORCE( 1 )
+
+COMMENT GET AREA AND FIX INTO DATA
+	SET SMSVAR = 'area'
+	SET AREAIN = ''
+	CALLFUNC('getsmvar',SMSVAR,AREAIN)
+AREAFIX  FIX(9) 'phone='+AREAIN FORCE( 1 )
+
+COMMENT GET EXCH AND FIX INTO DATA
+	SET SMSVAR = 'exch'
+	SET EXCHIN = ''
+	CALLFUNC('getsmvar',SMSVAR,EXCHIN)
+EXCHFIX  FIX(3) EXCHIN FORCE( 1 )
+
+COMMENT GET PHONE AND FIX INTO DATA
+	SET SMSVAR = 'phone'
+	SET PHONEIN = ''
+	CALLFUNC('getsmvar',SMSVAR,PHONEIN)
+PHONEFIX  FIX(4) PHONEIN FORCE( 1 )
+
+COMMENT =======================================================================
+COMMENT ================= SAMPLE INFORMATION END ==============================
+COMMENT =======================================================================
+
+
+COMMENT =======================================================================
+COMMENT ================= GENERATED CODE FOR SAMPLE INFORMATION BEGIN =========
+COMMENT =======================================================================
+
+COMMENT Get num1 and fix into data
+  set smsvar = 'num1'
+  set num1in= 0
+  callfunc('getsmvar',smsvar,num1in)
+num1fix  fix(2) num1in force( 1 )
+        
+COMMENT Get dato1 and fix into data
+  set smsvar = 'dato1'
+  set dato1in= ''
+  callfunc('getsmvar',smsvar,dato1in)
+dato1fix  fix(50) dato1in force( 1 )
+        
+COMMENT Get dato2 and fix into data
+  set smsvar = 'dato2'
+  set dato2in= ''
+  callfunc('getsmvar',smsvar,dato2in)
+dato2fix  fix(50) dato2in force( 1 )
+        
+COMMENT Get dato3 and fix into data
+  set smsvar = 'dato3'
+  set dato3in= ''
+  callfunc('getsmvar',smsvar,dato3in)
+dato3fix  fix(50) dato3in force( 1 )
+        
+COMMENT Get tz and fix into data
+  set smsvar = 'tz'
+  set tzin= 0
+  callfunc('getsmvar',smsvar,tzin)
+tzfix  fix(1) tzin force( 1 )
+        
+COMMENT Get ivar1 and fix into data
+  set smsvar = 'ivar1'
+  set ivar1in= 0
+  callfunc('getsmvar',smsvar,ivar1in)
+ivar1fix  fix(9) ivar1in force( 1 )
+        
+COMMENT Get svar1 and fix into data
+  set smsvar = 'svar1'
+  set svar1in= ''
+  callfunc('getsmvar',smsvar,svar1in)
+svar1fix  fix(50) svar1in force( 1 )
+        
+COMMENT Get ivar2 and fix into data
+  set smsvar = 'ivar2'
+  set ivar2in= 0
+  callfunc('getsmvar',smsvar,ivar2in)
+ivar2fix  fix(9) ivar2in force( 1 )
+        
+COMMENT Get svar2 and fix into data
+  set smsvar = 'svar2'
+  set svar2in= ''
+  callfunc('getsmvar',smsvar,svar2in)
+svar2fix  fix(50) svar2in force( 1 )
+        
+COMMENT Get sample and fix into data
+  set smsvar = 'samp'
+  set sampin= 0
+  callfunc('getsmvar',smsvar,sampin)
+sampfix  fix(1) sampin force( 1 )
+        
+COMMENT Get Telephone Number and fix into data
+  set smsvar = 'telnumb'
+  set telnumin= ''
+  callfunc('getsmvar',smsvar,telnumin)
+telnumfx  fix(10) telnumin force( 1 )
+
+COMMENT =======================================================================
+COMMENT ================= GENERATED CODE FOR SAMPLE INFORMATION END ===========
+COMMENT =======================================================================
+
+
+COMMENT =======================================================================
+COMMENT ================== LISTS DEFINITIONS BEGIN ============================
+COMMENT =======================================================================
+
+LSYN	DEFINE
+	'}0Yes}1S�'/
+	'}0No}1No'
+
+LSSYN3	DEFINE
+	'YES'/
+	'NO'/
+	'PH03'/
+	'PH04'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW'/
+	'REFUSED'
+
+SUBSYN3	DEFINE
+	'YES'/
+	'NO'/
+	'DON''T KNOW'/
+	'REFUSED'
+
+LSSYN2	DEFINE
+	'YES'/
+	'NO'/
+	'PH03'/
+	'PH04'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBSYN2	DEFINE
+	'YES'/
+	'NO'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+COMMENT =======================================================================
+COMMENT ================== LISTS DEFINITIONS END ==============================
+COMMENT =======================================================================
+
+COMMENT =======================================================================
+COMMENT ============================= SCREENER BEGIN ==========================
+COMMENT =======================================================================
+
+	CALLFUNC( 'valstring', RESPID, KEYIN )
+COMMENT	CALLFUNC( 'setdataser', RESPID )
+
+PROT PROTECT 'Phone: '+ON+'('+AREAIN+')'+EXCHIN+'-'+PHONEIN+OFF+'  RespID: '+ON+RESPID+OFF+' '
+
+PRESCR CONTINUE
+
+COMMENT ============================= CONDICION ================================
+
+LSCOND1 DEFINE
+	'1'/
+	'2'/
+	'3'/
+	'4'/
+	'5'/
+	'6'/
+	'7'/
+	'8'/
+	'9'/
+	'10'/
+	'11'/
+	'12'/
+	'13'/
+	'14'/
+	'15'/
+	'16'/
+	'17'/
+	'18'/
+	'19'/
+	'20'/
+	'21'/
+	'22'/
+	'23'/
+	'24'/
+	'25'/
+	'26'/
+	'27'/
+	'28'/
+	'29'/
+	'30'/
+	'31'/
+	'32'/
+	'33'/
+	'34'/
+	'35'/
+	'36'/
+	'37'/
+	'38'/
+	'39'/
+	'40'/
+	'41'/
+	'42'/
+	'43'/
+	'44'/
+	'45'/
+	'46'/
+	'47'/
+	'48'/
+	'49'/
+	'50'/
+	'51'/
+	'52'/
+	'53'/
+	'54'/
+	'55'/
+	'56'/
+	'57'/
+	'58'/
+	'59'/
+	'60'/
+	'61'/
+	'62'/
+	'63'/
+	'64'/
+	'65'/
+	'66'/
+	'67'/
+	'68'/
+	'69'/
+	'70'/
+	'71'/
+	'72'/
+	'73'/
+	'74'/
+	'75'/
+	'76'/
+	'77'/
+	'78'/
+	'79'/
+	'80'/
+	'81'/
+	'82'/
+	'83'/
+	'84'/
+	'85'/
+	'86'/
+	'87'/
+	'88'/
+	'89'/
+	'90'/
+	'91'/
+	'92'/
+	'93'/
+	'94'/
+	'95'/
+	'96'/
+	'97'/
+	'98'/
+	'99'/
+	'100'
+
+
+COND1 DUMMYASK 'HOLDS NUMBER FROM 1 TO 100'
+	RESP SP LSCOND1
+
+	UNSET COND1
+	FOR iVarQIT = LSCOND1 RAN
+		SET   COND1 = iVarQIT
+		GOTO FORPASS
+	NEXT
+
+FORPASS	CONTINUE
+
+CONDD	DUMMYASK '@@RANDOM NUMBER '+ON+COND1+OFF+' DISPLAYED ONLY FOR TESTING PORPUSES@'
+	RESP SP 'CONTINUE'
+
+	UNSET iBitCond
+	SET   iBitCond = NBIT(COND1)
+
+COMMENT ================================    INTRO    ===========================
+QINTRO	ASK '
+Hello, my name is _________ and I''m calling for Alaska Survey Research, an 
+Alaska public opinion research firm. We are conducting a public opinion survey 
+today called the Alaska Survey. The survey concerns a variety of different 
+topics that you''ll probably find interesting.  We''d like to get your input 
+as a cellphone respondent, but the main thing we''d like to check is if you 
+can safely respond to the survey where you are right now?@
+*(IF NO)*... Would there be a better time I can call you back?@
+And are you an Alaska resident at least 18 years of age?@
+*(IF NO)*...Is there someone else I can speak to who is? (REPEAT INTRO)@'
+	RESP SP 
+		'YES, CONTINUE' /
+		'NOT AVAILABLE, ARRANGE CALLBACK' /
+		'NO, INITIAL REFUSAL. TERMINATE'
+
+	IF(TT){ 
+		SET QINTRO = 1 
+	}
+
+	UNSET iBitQInt
+	SET iBitQInt = NBIT(QINTRO)
+
+	IF(iBitQInt = 2){ GOTOSMS }
+	IF(iBitQInt = 3){
+		SET COMP = 19
+		SET QTIPCODE = 75
+		GOTO PRETERM
+	}
+
+TXTALL	DISPLAY '
+All phone numbers used for this survey were randomly 
+generated. We don''t know your name, but your opinions are important to 
+us, and we''d appreciate your participation if that''s OK with you.  
+Of course, your responses will be completely confidential.@'
+
+	PAUSE
+
+COMMENT =============================    S1    ===========================
+
+PRES1	CONTINUE
+
+S1	ASK '
+What is the zipcode where you live?@
+*(DO NOT READ)* DON''T KNOW (PROBE FOR LEANING)... CODE AS 98@
+*(DO NOT READ)* REFUSED CODE AS 99@'
+	RESP NUM 0 TO 99999
+
+	UNSET ZIPVAR
+	SET ZIPVAR = S1
+
+	IF(S1 = 98 .OR. S1 = 99){
+		SET COMP = 5
+		SET QTIPCODE = 63
+		GOTO PRETERM
+	}
+
+COMMENT =====================   BOROUGH DUMMY    ==========================
+
+LSBOROU	DEFINE
+	'Municipality of Anchorage'/
+	'Fairbanks North Star Borough'/
+	'Kenai Peninsula Borough'/
+	'MatSu Borough'/
+	'Denali Borough'/
+	'Valdez Cordova Census Area'/
+	'Southeast Fairbanks Census Area'/
+	'Kodiak Island Borough'/
+	'Aleutians East Borough'/
+	'Aleutians West Borough'/
+	'Bethel Census Area'/
+	'Bristol Bay Borough'/
+	'Dillingham Census Area'/
+	'Lake And Peninsula Borough'/
+	'Nome Census Area'/
+	'North Slope Borough'/
+	'Northwest Arctic Borough'/
+	'Kusilvak Census Area'/
+	'Yukon Koyukuk Census Area'/
+	'Haines Borough'/
+	'City and Borough of Juneau'/
+	'Ketchikan Borough'/
+	'Prince of Wales-Hyder Census Area'/
+	'City and Borough of Sitka'/
+	'Hoonah Angoon Census Area'/
+	'Skagway Borough'/
+	'Wrangell Petersburg Census Area'/
+	'City and Borough of Yakutat'
+
+QBOR	DUMMYASK 'HOLDS VALUE OF BOROUGH@'
+	RESP SP LSBOROU
+
+COMMENT =====================  DUMMY MUNICIPALITY    ===========================
+
+LSQMUN	DEFINE
+	'Anchorage'/
+	'Fort Richardson'/
+	'Elmendorf AFB'/
+	'Indian'/
+	'ChugiakEagle River'/
+	'Girdwood'/
+	'Fairbanks'/
+	'Eielson AFB'/
+	'Fort Wainwright'/
+	'North Pole'/
+	'Salcha'/
+	'Two Rivers'/
+	'Ester'/
+	'Anchor Point'/
+	'Clam Gulch'/
+	'Cooper Landing'/
+	'Homer'/
+	'Hope'/
+	'Kasilof'/
+	'Kenai'/
+	'Moose Pass'/
+	'Nikiski'/
+	'Ninilchik'/
+	'Seldovia'/
+	'Seward'/
+	'Soldotna'/
+	'Sterling'/
+	'Tyonek'/
+	'Wasilla'/
+	'Palmer'/
+	'Big Lake'/
+	'Skwentna'/
+	'Sutton'/
+	'Talkeetna'/
+	'Trapper Creek'/
+	'Willow'/
+	'Houston'/
+	'Clear'/
+	'Cantwell'/
+	'Healy'/
+	'Anderson'/
+	'Denali National Park'/
+	'Chitina'/
+	'Copper Center'/
+	'Cordova'/
+	'Gakona'/
+	'Glennallen'/
+	'Tatitlek'/
+	'Valdez'/
+	'Whittier'/
+	'Fort Greely'/
+	'Chicken'/
+	'Delta Junction'/
+	'Eagle'/
+	'Northway'/
+	'Tanacross'/
+	'Tok'/
+	'Port Lions'/
+	'Karluk'/
+	'Kodiak'/
+	'Larsen Bay'/
+	'Old Harbor'/
+	'Ouzinkie'/
+	'Akutan'/
+	'Cold Bay'/
+	'False Pass'/
+	'King Cove'/
+	'Sand Point'/
+	'Adak'/
+	'Atka'/
+	'Saint George Island'/
+	'Nikolski'/
+	'Saint Paul Island'/
+	'Unalaska'/
+	'Dutch Harbor'/
+	'Kongiganak'/
+	'Akiachak'/
+	'Akiak'/
+	'Aniak'/
+	'Bethel'/
+	'Chefornak'/
+	'Crooked Creek'/
+	'Eek'/
+	'Goodnews Bay'/
+	'Kalskag'/
+	'Kasigluk'/
+	'Kipnuk'/
+	'Kwethluk'/
+	'Kwigillingok'/
+	'Lower Kalskag'/
+	'Mekoryuk'/
+	'Napakiak'/
+	'Toksook Bay'/
+	'Nunapitchuk'/
+	'Platinum'/
+	'Quinhagak'/
+	'Red Devil'/
+	'Sleetmute'/
+	'Tuluksak'/
+	'Tuntutuliak'/
+	'Tununak'/
+	'Nightmute'/
+	'King Salmon'/
+	'Naknek'/
+	'South Naknek'/
+	'Aleknagik'/
+	'Clarks Point'/
+	'Dillingham'/
+	'Ekwok'/
+	'Manokotak'/
+	'New Stuyahok'/
+	'Togiak'/
+	'Chignik Lake'/
+	'Port Heiden'/
+	'Chignik'/
+	'Chignik Lagoon'/
+	'Egegik'/
+	'Iliamna'/
+	'Levelock'/
+	'Nondalton'/
+	'Pedro Bay'/
+	'Perryville'/
+	'Pilot Point'/
+	'Port Alsworth'/
+	'Saint Michael'/
+	'Stebbins'/
+	'Unalakleet'/
+	'Elim'/
+	'Gambell'/
+	'Koyuk'/
+	'Nome'/
+	'Savoonga'/
+	'Shaktoolik'/
+	'Shishmaref'/
+	'Teller'/
+	'Wales'/
+	'White Mountain'/
+	'Brevig Mission'/
+	'Anaktuvuk Pass'/
+	'Barrow'/
+	'Prudhoe Bay'/
+	'Kaktovik'/
+	'Point Lay'/
+	'Point Hope'/
+	'Wainwright'/
+	'Nuiqsut'/
+	'Atqasuk'/
+	'Buckland'/
+	'Deering'/
+	'Kiana'/
+	'Kivalina'/
+	'Kobuk'/
+	'Kotzebue'/
+	'Noatak'/
+	'Noorvik'/
+	'Selawik'/
+	'Shungnak'/
+	'Ambler'/
+	'Alakanuk'/
+	'Chevak'/
+	'Emmonak'/
+	'Marshall'/
+	'Hooper Bay'/
+	'Kotlik'/
+	'Mountain Village'/
+	'Pilot Station'/
+	'Russian Mission'/
+	'Saint Marys'/
+	'Scammon Bay'/
+	'Nunam Iqua'/
+	'Anvik'/
+	'Grayling'/
+	'Holy Cross'/
+	'Mc Grath'/
+	'Shageluk'/
+	'Takotna'/
+	'Nikolai'/
+	'Allakaket'/
+	'Arctic Village'/
+	'Beaver'/
+	'Bettles Field'/
+	'Central'/
+	'Circle'/
+	'Fort Yukon'/
+	'Galena'/
+	'Hughes'/
+	'Huslia'/
+	'Kaltag'/
+	'Koyukuk'/
+	'Manley Hot Springs'/
+	'Lake Minchumina'/
+	'Minto'/
+	'Nenana'/
+	'Nulato'/
+	'Rampart'/
+	'Ruby'/
+	'Stevens Village'/
+	'Tanana'/
+	'Venetie'/
+	'Chalkyitsik'/
+	'Haines'/
+	'Juneau'/
+	'Auke Bay'/
+	'Douglas'/
+	'Ketchikan'/
+	'Ward Cove'/
+	'Meyers Chuck'/
+	'Coffman Cove'/
+	'Thorne Bay'/
+	'Craig'/
+	'Hydaburg'/
+	'Hyder'/
+	'Klawock'/
+	'Metlakatla'/
+	'Point Baker'/
+	'Sitka'/
+	'Angoon'/
+	'Elfin Cove'/
+	'Gustavus'/
+	'Hoonah'/
+	'Pelican'/
+	'Tenakee Springs'/
+	'Skagway'/
+	'Kake'/
+	'Petersburg'/
+	'Port Alexander'/
+	'Wrangell'/
+	'Yakutat'
+
+QMUN	DUMMYASK 'HOLDS VALUE FOR MUNICIPALITY@'
+	RESP SP LSQMUN
+
+COMMENT =============================    ZIPCODE  VALIDATION  ===========================
+
+ZIPDUM	DUMMYASK 'SELECT MARKET FROM ZIPCODE'
+	RESP SP 
+		'Anchorage'/
+		'Fairbanks'/
+		'Southcentral'/
+		'Rural'/
+		'Southeast'/
+		'None of the above'
+
+	UNSET ZIPDUM
+	SET ZIPDUM = 6
+
+	IF(ZIPVAR=99501) {SET ZIPDUM=1}
+	IF(ZIPVAR=99502) {SET ZIPDUM=1}
+	IF(ZIPVAR=99503) {SET ZIPDUM=1}
+	IF(ZIPVAR=99504) {SET ZIPDUM=1}
+	IF(ZIPVAR=99505) {SET ZIPDUM=1}
+	IF(ZIPVAR=99506) {SET ZIPDUM=1}
+	IF(ZIPVAR=99507) {SET ZIPDUM=1}
+	IF(ZIPVAR=99508) {SET ZIPDUM=1}
+	IF(ZIPVAR=99509) {SET ZIPDUM=1}
+	IF(ZIPVAR=99510) {SET ZIPDUM=1}
+	IF(ZIPVAR=99511) {SET ZIPDUM=1}
+	IF(ZIPVAR=99513) {SET ZIPDUM=1}
+	IF(ZIPVAR=99514) {SET ZIPDUM=1}
+	IF(ZIPVAR=99515) {SET ZIPDUM=1}
+	IF(ZIPVAR=99516) {SET ZIPDUM=1}
+	IF(ZIPVAR=99517) {SET ZIPDUM=1}
+	IF(ZIPVAR=99518) {SET ZIPDUM=1}
+	IF(ZIPVAR=99519) {SET ZIPDUM=1}
+	IF(ZIPVAR=99520) {SET ZIPDUM=1}
+	IF(ZIPVAR=99521) {SET ZIPDUM=1}
+	IF(ZIPVAR=99522) {SET ZIPDUM=1}
+	IF(ZIPVAR=99523) {SET ZIPDUM=1}
+	IF(ZIPVAR=99524) {SET ZIPDUM=1}
+	IF(ZIPVAR=99529) {SET ZIPDUM=1}
+	IF(ZIPVAR=99530) {SET ZIPDUM=1}
+	IF(ZIPVAR=99540) {SET ZIPDUM=1}
+	IF(ZIPVAR=99567) {SET ZIPDUM=1}
+	IF(ZIPVAR=99577) {SET ZIPDUM=1}
+	IF(ZIPVAR=99587) {SET ZIPDUM=1}
+	IF(ZIPVAR=99599) {SET ZIPDUM=1}
+	IF(ZIPVAR=99695) {SET ZIPDUM=1}
+
+	IF(ZIPVAR=99701) {SET ZIPDUM=2}
+	IF(ZIPVAR=99702) {SET ZIPDUM=2}
+	IF(ZIPVAR=99703) {SET ZIPDUM=2}
+	IF(ZIPVAR=99705) {SET ZIPDUM=2}
+	IF(ZIPVAR=99706) {SET ZIPDUM=2}
+	IF(ZIPVAR=99707) {SET ZIPDUM=2}
+	IF(ZIPVAR=99708) {SET ZIPDUM=2}
+	IF(ZIPVAR=99709) {SET ZIPDUM=2}
+	IF(ZIPVAR=99710) {SET ZIPDUM=2}
+	IF(ZIPVAR=99711) {SET ZIPDUM=2}
+	IF(ZIPVAR=99712) {SET ZIPDUM=2}
+	IF(ZIPVAR=99714) {SET ZIPDUM=2}
+	IF(ZIPVAR=99716) {SET ZIPDUM=2}
+	IF(ZIPVAR=99725) {SET ZIPDUM=2}
+	IF(ZIPVAR=99775) {SET ZIPDUM=2}
+	IF(ZIPVAR=99790) {SET ZIPDUM=2}
+	IF(ZIPVAR=99556) {SET ZIPDUM=3}
+	IF(ZIPVAR=99568) {SET ZIPDUM=3}
+	IF(ZIPVAR=99572) {SET ZIPDUM=3}
+	IF(ZIPVAR=99603) {SET ZIPDUM=3}
+	IF(ZIPVAR=99605) {SET ZIPDUM=3}
+	IF(ZIPVAR=99610) {SET ZIPDUM=3}
+	IF(ZIPVAR=99611) {SET ZIPDUM=3}
+	IF(ZIPVAR=99631) {SET ZIPDUM=3}
+	IF(ZIPVAR=99635) {SET ZIPDUM=3}
+	IF(ZIPVAR=99639) {SET ZIPDUM=3}
+	IF(ZIPVAR=99663) {SET ZIPDUM=3}
+	IF(ZIPVAR=99664) {SET ZIPDUM=3}
+	IF(ZIPVAR=99669) {SET ZIPDUM=3}
+	IF(ZIPVAR=99672) {SET ZIPDUM=3}
+	IF(ZIPVAR=99682) {SET ZIPDUM=3}
+	IF(ZIPVAR=99623) {SET ZIPDUM=3}
+	IF(ZIPVAR=99629) {SET ZIPDUM=3}
+	IF(ZIPVAR=99645) {SET ZIPDUM=3}
+	IF(ZIPVAR=99652) {SET ZIPDUM=3}
+	IF(ZIPVAR=99654) {SET ZIPDUM=3}
+	IF(ZIPVAR=99667) {SET ZIPDUM=3}
+	IF(ZIPVAR=99674) {SET ZIPDUM=3}
+	IF(ZIPVAR=99676) {SET ZIPDUM=3}
+	IF(ZIPVAR=99683) {SET ZIPDUM=3}
+	IF(ZIPVAR=99687) {SET ZIPDUM=3}
+	IF(ZIPVAR=99688) {SET ZIPDUM=3}
+	IF(ZIPVAR=99694) {SET ZIPDUM=3}
+	IF(ZIPVAR=99704) {SET ZIPDUM=3}
+	IF(ZIPVAR=99729) {SET ZIPDUM=3}
+	IF(ZIPVAR=99743) {SET ZIPDUM=3}
+	IF(ZIPVAR=99744) {SET ZIPDUM=3}
+	IF(ZIPVAR=99755) {SET ZIPDUM=3}
+	IF(ZIPVAR=99566) {SET ZIPDUM=3}
+	IF(ZIPVAR=99573) {SET ZIPDUM=3}
+	IF(ZIPVAR=99574) {SET ZIPDUM=3}
+	IF(ZIPVAR=99586) {SET ZIPDUM=3}
+	IF(ZIPVAR=99588) {SET ZIPDUM=3}
+	IF(ZIPVAR=99677) {SET ZIPDUM=3}
+	IF(ZIPVAR=99686) {SET ZIPDUM=3}
+	IF(ZIPVAR=99693) {SET ZIPDUM=3}
+	IF(ZIPVAR=99731) {SET ZIPDUM=3}
+	IF(ZIPVAR=99732) {SET ZIPDUM=3}
+	IF(ZIPVAR=99737) {SET ZIPDUM=3}
+	IF(ZIPVAR=99738) {SET ZIPDUM=3}
+	IF(ZIPVAR=99764) {SET ZIPDUM=3}
+	IF(ZIPVAR=99776) {SET ZIPDUM=3}
+	IF(ZIPVAR=99779) {SET ZIPDUM=3}
+	IF(ZIPVAR=99780) {SET ZIPDUM=3}
+	IF(ZIPVAR=99550) {SET ZIPDUM=3}
+	IF(ZIPVAR=99608) {SET ZIPDUM=3}
+	IF(ZIPVAR=99615) {SET ZIPDUM=3}
+	IF(ZIPVAR=99619) {SET ZIPDUM=3}
+	IF(ZIPVAR=99624) {SET ZIPDUM=3}
+	IF(ZIPVAR=99643) {SET ZIPDUM=3}
+	IF(ZIPVAR=99644) {SET ZIPDUM=3}
+	IF(ZIPVAR=99697) {SET ZIPDUM=3}
+	IF(ZIPVAR=99553) {SET ZIPDUM=4}
+	IF(ZIPVAR=99571) {SET ZIPDUM=4}
+	IF(ZIPVAR=99583) {SET ZIPDUM=4}
+	IF(ZIPVAR=99612) {SET ZIPDUM=4}
+	IF(ZIPVAR=99661) {SET ZIPDUM=4}
+	IF(ZIPVAR=99546) {SET ZIPDUM=4}
+	IF(ZIPVAR=99547) {SET ZIPDUM=4}
+	IF(ZIPVAR=99591) {SET ZIPDUM=4}
+	IF(ZIPVAR=99638) {SET ZIPDUM=4}
+	IF(ZIPVAR=99660) {SET ZIPDUM=4}
+	IF(ZIPVAR=99685) {SET ZIPDUM=4}
+	IF(ZIPVAR=99692) {SET ZIPDUM=4}
+	IF(ZIPVAR=99545) {SET ZIPDUM=4}
+	IF(ZIPVAR=99551) {SET ZIPDUM=4}
+	IF(ZIPVAR=99552) {SET ZIPDUM=4}
+	IF(ZIPVAR=99557) {SET ZIPDUM=4}
+	IF(ZIPVAR=99559) {SET ZIPDUM=4}
+	IF(ZIPVAR=99561) {SET ZIPDUM=4}
+	IF(ZIPVAR=99575) {SET ZIPDUM=4}
+	IF(ZIPVAR=99578) {SET ZIPDUM=4}
+	IF(ZIPVAR=99589) {SET ZIPDUM=4}
+	IF(ZIPVAR=99607) {SET ZIPDUM=4}
+	IF(ZIPVAR=99609) {SET ZIPDUM=4}
+	IF(ZIPVAR=99614) {SET ZIPDUM=4}
+	IF(ZIPVAR=99621) {SET ZIPDUM=4}
+	IF(ZIPVAR=99622) {SET ZIPDUM=4}
+	IF(ZIPVAR=99626) {SET ZIPDUM=4}
+	IF(ZIPVAR=99630) {SET ZIPDUM=4}
+	IF(ZIPVAR=99634) {SET ZIPDUM=4}
+	IF(ZIPVAR=99637) {SET ZIPDUM=4}
+	IF(ZIPVAR=99641) {SET ZIPDUM=4}
+	IF(ZIPVAR=99651) {SET ZIPDUM=4}
+	IF(ZIPVAR=99655) {SET ZIPDUM=4}
+	IF(ZIPVAR=99656) {SET ZIPDUM=4}
+	IF(ZIPVAR=99668) {SET ZIPDUM=4}
+	IF(ZIPVAR=99679) {SET ZIPDUM=4}
+	IF(ZIPVAR=99680) {SET ZIPDUM=4}
+	IF(ZIPVAR=99681) {SET ZIPDUM=4}
+	IF(ZIPVAR=99690) {SET ZIPDUM=4}
+	IF(ZIPVAR=99613) {SET ZIPDUM=4}
+	IF(ZIPVAR=99633) {SET ZIPDUM=4}
+	IF(ZIPVAR=99670) {SET ZIPDUM=4}
+	IF(ZIPVAR=99555) {SET ZIPDUM=4}
+	IF(ZIPVAR=99569) {SET ZIPDUM=4}
+	IF(ZIPVAR=99576) {SET ZIPDUM=4}
+	IF(ZIPVAR=99580) {SET ZIPDUM=4}
+	IF(ZIPVAR=99628) {SET ZIPDUM=4}
+	IF(ZIPVAR=99636) {SET ZIPDUM=4}
+	IF(ZIPVAR=99678) {SET ZIPDUM=4}
+	IF(ZIPVAR=99548) {SET ZIPDUM=4}
+	IF(ZIPVAR=99549) {SET ZIPDUM=4}
+	IF(ZIPVAR=99564) {SET ZIPDUM=4}
+	IF(ZIPVAR=99565) {SET ZIPDUM=4}
+	IF(ZIPVAR=99579) {SET ZIPDUM=4}
+	IF(ZIPVAR=99606) {SET ZIPDUM=4}
+	IF(ZIPVAR=99625) {SET ZIPDUM=4}
+	IF(ZIPVAR=99640) {SET ZIPDUM=4}
+	IF(ZIPVAR=99647) {SET ZIPDUM=4}
+	IF(ZIPVAR=99648) {SET ZIPDUM=4}
+	IF(ZIPVAR=99649) {SET ZIPDUM=4}
+	IF(ZIPVAR=99653) {SET ZIPDUM=4}
+	IF(ZIPVAR=99659) {SET ZIPDUM=4}
+	IF(ZIPVAR=99671) {SET ZIPDUM=4}
+	IF(ZIPVAR=99684) {SET ZIPDUM=4}
+	IF(ZIPVAR=99739) {SET ZIPDUM=4}
+	IF(ZIPVAR=99742) {SET ZIPDUM=4}
+	IF(ZIPVAR=99753) {SET ZIPDUM=4}
+	IF(ZIPVAR=99762) {SET ZIPDUM=4}
+	IF(ZIPVAR=99769) {SET ZIPDUM=4}
+	IF(ZIPVAR=99771) {SET ZIPDUM=4}
+	IF(ZIPVAR=99772) {SET ZIPDUM=4}
+	IF(ZIPVAR=99778) {SET ZIPDUM=4}
+	IF(ZIPVAR=99783) {SET ZIPDUM=4}
+	IF(ZIPVAR=99784) {SET ZIPDUM=4}
+	IF(ZIPVAR=99785) {SET ZIPDUM=4}
+	IF(ZIPVAR=99721) {SET ZIPDUM=4}
+	IF(ZIPVAR=99723) {SET ZIPDUM=4}
+	IF(ZIPVAR=99734) {SET ZIPDUM=4}
+	IF(ZIPVAR=99747) {SET ZIPDUM=4}
+	IF(ZIPVAR=99759) {SET ZIPDUM=4}
+	IF(ZIPVAR=99766) {SET ZIPDUM=4}
+	IF(ZIPVAR=99782) {SET ZIPDUM=4}
+	IF(ZIPVAR=99789) {SET ZIPDUM=4}
+	IF(ZIPVAR=99791) {SET ZIPDUM=4}
+	IF(ZIPVAR=99727) {SET ZIPDUM=4}
+	IF(ZIPVAR=99736) {SET ZIPDUM=4}
+	IF(ZIPVAR=99749) {SET ZIPDUM=4}
+	IF(ZIPVAR=99750) {SET ZIPDUM=4}
+	IF(ZIPVAR=99751) {SET ZIPDUM=4}
+	IF(ZIPVAR=99752) {SET ZIPDUM=4}
+	IF(ZIPVAR=99761) {SET ZIPDUM=4}
+	IF(ZIPVAR=99763) {SET ZIPDUM=4}
+	IF(ZIPVAR=99770) {SET ZIPDUM=4}
+	IF(ZIPVAR=99773) {SET ZIPDUM=4}
+	IF(ZIPVAR=99786) {SET ZIPDUM=4}
+	IF(ZIPVAR=99554) {SET ZIPDUM=4}
+	IF(ZIPVAR=99563) {SET ZIPDUM=4}
+	IF(ZIPVAR=99581) {SET ZIPDUM=4}
+	IF(ZIPVAR=99585) {SET ZIPDUM=4}
+	IF(ZIPVAR=99604) {SET ZIPDUM=4}
+	IF(ZIPVAR=99620) {SET ZIPDUM=4}
+	IF(ZIPVAR=99632) {SET ZIPDUM=4}
+	IF(ZIPVAR=99650) {SET ZIPDUM=4}
+	IF(ZIPVAR=99657) {SET ZIPDUM=4}
+	IF(ZIPVAR=99658) {SET ZIPDUM=4}
+	IF(ZIPVAR=99662) {SET ZIPDUM=4}
+	IF(ZIPVAR=99666) {SET ZIPDUM=4}
+	IF(ZIPVAR=99558) {SET ZIPDUM=4}
+	IF(ZIPVAR=99590) {SET ZIPDUM=4}
+	IF(ZIPVAR=99602) {SET ZIPDUM=4}
+	IF(ZIPVAR=99627) {SET ZIPDUM=4}
+	IF(ZIPVAR=99665) {SET ZIPDUM=4}
+	IF(ZIPVAR=99675) {SET ZIPDUM=4}
+	IF(ZIPVAR=99691) {SET ZIPDUM=4}
+	IF(ZIPVAR=99720) {SET ZIPDUM=4}
+	IF(ZIPVAR=99722) {SET ZIPDUM=4}
+	IF(ZIPVAR=99724) {SET ZIPDUM=4}
+	IF(ZIPVAR=99726) {SET ZIPDUM=4}
+	IF(ZIPVAR=99730) {SET ZIPDUM=4}
+	IF(ZIPVAR=99733) {SET ZIPDUM=4}
+	IF(ZIPVAR=99740) {SET ZIPDUM=4}
+	IF(ZIPVAR=99741) {SET ZIPDUM=4}
+	IF(ZIPVAR=99745) {SET ZIPDUM=4}
+	IF(ZIPVAR=99746) {SET ZIPDUM=4}
+	IF(ZIPVAR=99748) {SET ZIPDUM=4}
+	IF(ZIPVAR=99754) {SET ZIPDUM=4}
+	IF(ZIPVAR=99756) {SET ZIPDUM=4}
+	IF(ZIPVAR=99757) {SET ZIPDUM=4}
+	IF(ZIPVAR=99758) {SET ZIPDUM=4}
+	IF(ZIPVAR=99760) {SET ZIPDUM=4}
+	IF(ZIPVAR=99765) {SET ZIPDUM=4}
+	IF(ZIPVAR=99767) {SET ZIPDUM=4}
+	IF(ZIPVAR=99768) {SET ZIPDUM=4}
+	IF(ZIPVAR=99774) {SET ZIPDUM=4}
+	IF(ZIPVAR=99777) {SET ZIPDUM=4}
+	IF(ZIPVAR=99781) {SET ZIPDUM=4}
+	IF(ZIPVAR=99788) {SET ZIPDUM=4}
+	IF(ZIPVAR=99827) {SET ZIPDUM=5}
+	IF(ZIPVAR=99801) {SET ZIPDUM=5}
+	IF(ZIPVAR=99802) {SET ZIPDUM=5}
+	IF(ZIPVAR=99803) {SET ZIPDUM=5}
+	IF(ZIPVAR=99811) {SET ZIPDUM=5}
+	IF(ZIPVAR=99812) {SET ZIPDUM=5}
+	IF(ZIPVAR=99821) {SET ZIPDUM=5}
+	IF(ZIPVAR=99824) {SET ZIPDUM=5}
+	IF(ZIPVAR=99850) {SET ZIPDUM=5}
+	IF(ZIPVAR=99901) {SET ZIPDUM=5}
+	IF(ZIPVAR=99928) {SET ZIPDUM=5}
+	IF(ZIPVAR=99950) {SET ZIPDUM=5}
+	IF(ZIPVAR=99903) {SET ZIPDUM=5}
+	IF(ZIPVAR=99918) {SET ZIPDUM=5}
+	IF(ZIPVAR=99919) {SET ZIPDUM=5}
+	IF(ZIPVAR=99921) {SET ZIPDUM=5}
+	IF(ZIPVAR=99922) {SET ZIPDUM=5}
+	IF(ZIPVAR=99923) {SET ZIPDUM=5}
+	IF(ZIPVAR=99925) {SET ZIPDUM=5}
+	IF(ZIPVAR=99926) {SET ZIPDUM=5}
+	IF(ZIPVAR=99927) {SET ZIPDUM=5}
+	IF(ZIPVAR=99835) {SET ZIPDUM=5}
+	IF(ZIPVAR=99820) {SET ZIPDUM=5}
+	IF(ZIPVAR=99825) {SET ZIPDUM=5}
+	IF(ZIPVAR=99826) {SET ZIPDUM=5}
+	IF(ZIPVAR=99829) {SET ZIPDUM=5}
+	IF(ZIPVAR=99832) {SET ZIPDUM=5}
+	IF(ZIPVAR=99841) {SET ZIPDUM=5}
+	IF(ZIPVAR=99840) {SET ZIPDUM=5}
+	IF(ZIPVAR=99830) {SET ZIPDUM=5}
+	IF(ZIPVAR=99833) {SET ZIPDUM=5}
+	IF(ZIPVAR=99836) {SET ZIPDUM=5}
+	IF(ZIPVAR=99929) {SET ZIPDUM=5}
+	IF(ZIPVAR=99689) {SET ZIPDUM=5}
+
+	UNSET iBitQZIP
+	SET   iBitQZIP = NBIT(ZIPDUM)
+
+	IF(ZIPVAR=99501){ SET QBOR = 1}
+	IF(ZIPVAR=99502){ SET QBOR = 1}
+	IF(ZIPVAR=99503){ SET QBOR = 1}
+	IF(ZIPVAR=99504){ SET QBOR = 1}
+	IF(ZIPVAR=99505){ SET QBOR = 1}
+	IF(ZIPVAR=99506){ SET QBOR = 1}
+	IF(ZIPVAR=99507){ SET QBOR = 1}
+	IF(ZIPVAR=99508){ SET QBOR = 1}
+	IF(ZIPVAR=99509){ SET QBOR = 1}
+	IF(ZIPVAR=99510){ SET QBOR = 1}
+	IF(ZIPVAR=99511){ SET QBOR = 1}
+	IF(ZIPVAR=99513){ SET QBOR = 1}
+	IF(ZIPVAR=99514){ SET QBOR = 1}
+	IF(ZIPVAR=99515){ SET QBOR = 1}
+	IF(ZIPVAR=99516){ SET QBOR = 1}
+	IF(ZIPVAR=99517){ SET QBOR = 1}
+	IF(ZIPVAR=99518){ SET QBOR = 1}
+	IF(ZIPVAR=99519){ SET QBOR = 1}
+	IF(ZIPVAR=99520){ SET QBOR = 1}
+	IF(ZIPVAR=99521){ SET QBOR = 1}
+	IF(ZIPVAR=99522){ SET QBOR = 1}
+	IF(ZIPVAR=99523){ SET QBOR = 1}
+	IF(ZIPVAR=99524){ SET QBOR = 1}
+	IF(ZIPVAR=99529){ SET QBOR = 1}
+	IF(ZIPVAR=99530){ SET QBOR = 1}
+	IF(ZIPVAR=99540){ SET QBOR = 1}
+	IF(ZIPVAR=99567){ SET QBOR = 1}
+	IF(ZIPVAR=99577){ SET QBOR = 1}
+	IF(ZIPVAR=99587){ SET QBOR = 1}
+	IF(ZIPVAR=99599){ SET QBOR = 1}
+	IF(ZIPVAR=99695){ SET QBOR = 1}
+
+	IF(ZIPVAR=99701){ SET QBOR = 2}
+	IF(ZIPVAR=99702){ SET QBOR = 2}
+	IF(ZIPVAR=99703){ SET QBOR = 2}
+	IF(ZIPVAR=99705){ SET QBOR = 2}
+	IF(ZIPVAR=99706){ SET QBOR = 2}
+	IF(ZIPVAR=99707){ SET QBOR = 2}
+	IF(ZIPVAR=99708){ SET QBOR = 2}
+	IF(ZIPVAR=99709){ SET QBOR = 2}
+	IF(ZIPVAR=99710){ SET QBOR = 2}
+	IF(ZIPVAR=99711){ SET QBOR = 2}
+	IF(ZIPVAR=99712){ SET QBOR = 2}
+	IF(ZIPVAR=99714){ SET QBOR = 2}
+	IF(ZIPVAR=99716){ SET QBOR = 2}
+	IF(ZIPVAR=99725){ SET QBOR = 2}
+	IF(ZIPVAR=99775){ SET QBOR = 2}
+	IF(ZIPVAR=99790){ SET QBOR = 2}
+
+	IF(ZIPVAR=99556){ SET QBOR = 3}
+	IF(ZIPVAR=99568){ SET QBOR = 3}
+	IF(ZIPVAR=99572){ SET QBOR = 3}
+	IF(ZIPVAR=99603){ SET QBOR = 3}
+	IF(ZIPVAR=99605){ SET QBOR = 3}
+	IF(ZIPVAR=99610){ SET QBOR = 3}
+	IF(ZIPVAR=99611){ SET QBOR = 3}
+	IF(ZIPVAR=99631){ SET QBOR = 3}
+	IF(ZIPVAR=99635){ SET QBOR = 3}
+	IF(ZIPVAR=99639){ SET QBOR = 3}
+	IF(ZIPVAR=99663){ SET QBOR = 3}
+	IF(ZIPVAR=99664){ SET QBOR = 3}
+	IF(ZIPVAR=99669){ SET QBOR = 3}
+	IF(ZIPVAR=99672){ SET QBOR = 3}
+	IF(ZIPVAR=99682){ SET QBOR = 3}
+
+
+	IF(ZIPVAR=99623){ SET QBOR = 4}
+	IF(ZIPVAR=99629){ SET QBOR = 4}
+	IF(ZIPVAR=99645){ SET QBOR = 4}
+	IF(ZIPVAR=99652){ SET QBOR = 4}
+	IF(ZIPVAR=99654){ SET QBOR = 4}
+	IF(ZIPVAR=99667){ SET QBOR = 4}
+	IF(ZIPVAR=99674){ SET QBOR = 4}
+	IF(ZIPVAR=99676){ SET QBOR = 4}
+	IF(ZIPVAR=99683){ SET QBOR = 4}
+	IF(ZIPVAR=99687){ SET QBOR = 4}
+	IF(ZIPVAR=99688){ SET QBOR = 4}
+	IF(ZIPVAR=99694){ SET QBOR = 4}
+
+	IF(ZIPVAR=99704){ SET QBOR = 5}
+	IF(ZIPVAR=99729){ SET QBOR = 5}
+	IF(ZIPVAR=99743){ SET QBOR = 5}
+	IF(ZIPVAR=99744){ SET QBOR = 5}
+	IF(ZIPVAR=99755){ SET QBOR = 5}
+
+	IF(ZIPVAR=99566){ SET QBOR = 6}
+	IF(ZIPVAR=99573){ SET QBOR = 6}
+	IF(ZIPVAR=99574){ SET QBOR = 6}
+	IF(ZIPVAR=99586){ SET QBOR = 6}
+	IF(ZIPVAR=99588){ SET QBOR = 6}
+	IF(ZIPVAR=99677){ SET QBOR = 6}
+	IF(ZIPVAR=99686){ SET QBOR = 6}
+	IF(ZIPVAR=99693){ SET QBOR = 6}
+
+	IF(ZIPVAR=99731){ SET QBOR = 7}
+	IF(ZIPVAR=99732){ SET QBOR = 7}
+	IF(ZIPVAR=99737){ SET QBOR = 7}
+	IF(ZIPVAR=99738){ SET QBOR = 7}
+	IF(ZIPVAR=99764){ SET QBOR = 7}
+	IF(ZIPVAR=99776){ SET QBOR = 7}
+	IF(ZIPVAR=99779){ SET QBOR = 7}
+	IF(ZIPVAR=99780){ SET QBOR = 7}
+
+	IF(ZIPVAR=99550){ SET QBOR = 8}
+	IF(ZIPVAR=99608){ SET QBOR = 8}
+	IF(ZIPVAR=99615){ SET QBOR = 8}
+	IF(ZIPVAR=99619){ SET QBOR = 8}
+	IF(ZIPVAR=99624){ SET QBOR = 8}
+	IF(ZIPVAR=99643){ SET QBOR = 8}
+	IF(ZIPVAR=99644){ SET QBOR = 8}
+	IF(ZIPVAR=99697){ SET QBOR = 8}
+
+	IF(ZIPVAR=99553){ SET QBOR = 9}
+	IF(ZIPVAR=99571){ SET QBOR = 9}
+	IF(ZIPVAR=99583){ SET QBOR = 9}
+	IF(ZIPVAR=99612){ SET QBOR = 9}
+	IF(ZIPVAR=99661){ SET QBOR = 9}
+
+	IF(ZIPVAR=99546){ SET QBOR = 10}
+	IF(ZIPVAR=99547){ SET QBOR = 10}
+	IF(ZIPVAR=99591){ SET QBOR = 10}
+	IF(ZIPVAR=99638){ SET QBOR = 10}
+	IF(ZIPVAR=99660){ SET QBOR = 10}
+	IF(ZIPVAR=99685){ SET QBOR = 10}
+	IF(ZIPVAR=99692){ SET QBOR = 10}
+
+	IF(ZIPVAR=99545){ SET QBOR = 11}
+	IF(ZIPVAR=99551){ SET QBOR = 11}
+	IF(ZIPVAR=99552){ SET QBOR = 11}
+	IF(ZIPVAR=99557){ SET QBOR = 11}
+	IF(ZIPVAR=99559){ SET QBOR = 11}
+	IF(ZIPVAR=99561){ SET QBOR = 11}
+	IF(ZIPVAR=99575){ SET QBOR = 11}
+	IF(ZIPVAR=99578){ SET QBOR = 11}
+	IF(ZIPVAR=99589){ SET QBOR = 11}
+	IF(ZIPVAR=99607){ SET QBOR = 11}
+	IF(ZIPVAR=99609){ SET QBOR = 11}
+	IF(ZIPVAR=99614){ SET QBOR = 11}
+	IF(ZIPVAR=99621){ SET QBOR = 11}
+	IF(ZIPVAR=99622){ SET QBOR = 11}
+	IF(ZIPVAR=99626){ SET QBOR = 11}
+	IF(ZIPVAR=99630){ SET QBOR = 11}
+	IF(ZIPVAR=99634){ SET QBOR = 11}
+	IF(ZIPVAR=99637){ SET QBOR = 11}
+	IF(ZIPVAR=99641){ SET QBOR = 11}
+	IF(ZIPVAR=99651){ SET QBOR = 11}
+	IF(ZIPVAR=99655){ SET QBOR = 11}
+	IF(ZIPVAR=99656){ SET QBOR = 11}
+	IF(ZIPVAR=99668){ SET QBOR = 11}
+	IF(ZIPVAR=99679){ SET QBOR = 11}
+	IF(ZIPVAR=99680){ SET QBOR = 11}
+	IF(ZIPVAR=99681){ SET QBOR = 11}
+	IF(ZIPVAR=99690){ SET QBOR = 11}
+
+	IF(ZIPVAR=99613){ SET QBOR = 12}
+	IF(ZIPVAR=99633){ SET QBOR = 12}
+	IF(ZIPVAR=99670){ SET QBOR = 12}
+
+	IF(ZIPVAR=99555){ SET QBOR = 13}
+	IF(ZIPVAR=99569){ SET QBOR = 13}
+	IF(ZIPVAR=99576){ SET QBOR = 13}
+	IF(ZIPVAR=99580){ SET QBOR = 13}
+	IF(ZIPVAR=99628){ SET QBOR = 13}
+	IF(ZIPVAR=99636){ SET QBOR = 13}
+	IF(ZIPVAR=99678){ SET QBOR = 13}
+
+	IF(ZIPVAR=99548){ SET QBOR = 14}
+	IF(ZIPVAR=99549){ SET QBOR = 14}
+	IF(ZIPVAR=99564){ SET QBOR = 14}
+	IF(ZIPVAR=99565){ SET QBOR = 14}
+	IF(ZIPVAR=99579){ SET QBOR = 14}
+	IF(ZIPVAR=99606){ SET QBOR = 14}
+	IF(ZIPVAR=99625){ SET QBOR = 14}
+	IF(ZIPVAR=99640){ SET QBOR = 14}
+	IF(ZIPVAR=99647){ SET QBOR = 14}
+	IF(ZIPVAR=99648){ SET QBOR = 14}
+	IF(ZIPVAR=99649){ SET QBOR = 14}
+	IF(ZIPVAR=99653){ SET QBOR = 14}
+
+	IF(ZIPVAR=99659){ SET QBOR = 15}
+	IF(ZIPVAR=99671){ SET QBOR = 15}
+	IF(ZIPVAR=99684){ SET QBOR = 15}
+	IF(ZIPVAR=99739){ SET QBOR = 15}
+	IF(ZIPVAR=99742){ SET QBOR = 15}
+	IF(ZIPVAR=99753){ SET QBOR = 15}
+	IF(ZIPVAR=99762){ SET QBOR = 15}
+	IF(ZIPVAR=99769){ SET QBOR = 15}
+	IF(ZIPVAR=99771){ SET QBOR = 15}
+	IF(ZIPVAR=99772){ SET QBOR = 15}
+	IF(ZIPVAR=99778){ SET QBOR = 15}
+	IF(ZIPVAR=99783){ SET QBOR = 15}
+	IF(ZIPVAR=99784){ SET QBOR = 15}
+	IF(ZIPVAR=99785){ SET QBOR = 15}
+
+	IF(ZIPVAR=99721){ SET QBOR = 16}
+	IF(ZIPVAR=99723){ SET QBOR = 16}
+	IF(ZIPVAR=99734){ SET QBOR = 16}
+	IF(ZIPVAR=99747){ SET QBOR = 16}
+	IF(ZIPVAR=99759){ SET QBOR = 16}
+	IF(ZIPVAR=99766){ SET QBOR = 16}
+	IF(ZIPVAR=99782){ SET QBOR = 16}
+	IF(ZIPVAR=99789){ SET QBOR = 16}
+	IF(ZIPVAR=99791){ SET QBOR = 16}
+
+	IF(ZIPVAR=99727){ SET QBOR = 17}
+	IF(ZIPVAR=99736){ SET QBOR = 17}
+	IF(ZIPVAR=99749){ SET QBOR = 17}
+	IF(ZIPVAR=99750){ SET QBOR = 17}
+	IF(ZIPVAR=99751){ SET QBOR = 17}
+	IF(ZIPVAR=99752){ SET QBOR = 17}
+	IF(ZIPVAR=99761){ SET QBOR = 17}
+	IF(ZIPVAR=99763){ SET QBOR = 17}
+	IF(ZIPVAR=99770){ SET QBOR = 17}
+	IF(ZIPVAR=99773){ SET QBOR = 17}
+	IF(ZIPVAR=99786){ SET QBOR = 17}
+
+	IF(ZIPVAR=99554){ SET QBOR = 18}
+	IF(ZIPVAR=99563){ SET QBOR = 18}
+	IF(ZIPVAR=99581){ SET QBOR = 18}
+	IF(ZIPVAR=99585){ SET QBOR = 18}
+	IF(ZIPVAR=99604){ SET QBOR = 18}
+	IF(ZIPVAR=99620){ SET QBOR = 18}
+	IF(ZIPVAR=99632){ SET QBOR = 18}
+	IF(ZIPVAR=99650){ SET QBOR = 18}
+	IF(ZIPVAR=99657){ SET QBOR = 18}
+	IF(ZIPVAR=99658){ SET QBOR = 18}
+	IF(ZIPVAR=99662){ SET QBOR = 18}
+	IF(ZIPVAR=99666){ SET QBOR = 18}
+
+	IF(ZIPVAR=99558){ SET QBOR = 19}
+	IF(ZIPVAR=99590){ SET QBOR = 19}
+	IF(ZIPVAR=99602){ SET QBOR = 19}
+	IF(ZIPVAR=99627){ SET QBOR = 19}
+	IF(ZIPVAR=99665){ SET QBOR = 19}
+	IF(ZIPVAR=99675){ SET QBOR = 19}
+	IF(ZIPVAR=99691){ SET QBOR = 19}
+	IF(ZIPVAR=99720){ SET QBOR = 19}
+	IF(ZIPVAR=99722){ SET QBOR = 19}
+	IF(ZIPVAR=99724){ SET QBOR = 19}
+	IF(ZIPVAR=99726){ SET QBOR = 19}
+	IF(ZIPVAR=99730){ SET QBOR = 19}
+	IF(ZIPVAR=99733){ SET QBOR = 19}
+	IF(ZIPVAR=99740){ SET QBOR = 19}
+	IF(ZIPVAR=99741){ SET QBOR = 19}
+	IF(ZIPVAR=99745){ SET QBOR = 19}
+	IF(ZIPVAR=99746){ SET QBOR = 19}
+	IF(ZIPVAR=99748){ SET QBOR = 19}
+	IF(ZIPVAR=99754){ SET QBOR = 19}
+	IF(ZIPVAR=99756){ SET QBOR = 19}
+	IF(ZIPVAR=99757){ SET QBOR = 19}
+	IF(ZIPVAR=99758){ SET QBOR = 19}
+	IF(ZIPVAR=99760){ SET QBOR = 19}
+	IF(ZIPVAR=99765){ SET QBOR = 19}
+	IF(ZIPVAR=99767){ SET QBOR = 19}
+	IF(ZIPVAR=99768){ SET QBOR = 19}
+	IF(ZIPVAR=99774){ SET QBOR = 19}
+	IF(ZIPVAR=99777){ SET QBOR = 19}
+	IF(ZIPVAR=99781){ SET QBOR = 19}
+	IF(ZIPVAR=99788){ SET QBOR = 19}
+
+	IF(ZIPVAR=99827){ SET QBOR = 20}
+
+	IF(ZIPVAR=99801){ SET QBOR = 21}
+	IF(ZIPVAR=99802){ SET QBOR = 21}
+	IF(ZIPVAR=99803){ SET QBOR = 21}
+	IF(ZIPVAR=99811){ SET QBOR = 21}
+	IF(ZIPVAR=99812){ SET QBOR = 21}
+	IF(ZIPVAR=99821){ SET QBOR = 21}
+	IF(ZIPVAR=99824){ SET QBOR = 21}
+	IF(ZIPVAR=99850){ SET QBOR = 21}
+
+	IF(ZIPVAR=99901){ SET QBOR = 22}
+	IF(ZIPVAR=99928){ SET QBOR = 22}
+	IF(ZIPVAR=99950){ SET QBOR = 22}
+
+	IF(ZIPVAR=99903){ SET QBOR = 23}
+	IF(ZIPVAR=99918){ SET QBOR = 23}
+	IF(ZIPVAR=99919){ SET QBOR = 23}
+	IF(ZIPVAR=99921){ SET QBOR = 23}
+	IF(ZIPVAR=99922){ SET QBOR = 23}
+	IF(ZIPVAR=99923){ SET QBOR = 23}
+	IF(ZIPVAR=99925){ SET QBOR = 23}
+	IF(ZIPVAR=99926){ SET QBOR = 23}
+	IF(ZIPVAR=99927){ SET QBOR = 23}
+
+	IF(ZIPVAR=99835){ SET QBOR = 24}
+
+	IF(ZIPVAR=99820){ SET QBOR = 25}
+	IF(ZIPVAR=99825){ SET QBOR = 25}
+	IF(ZIPVAR=99826){ SET QBOR = 25}
+	IF(ZIPVAR=99829){ SET QBOR = 25}
+	IF(ZIPVAR=99832){ SET QBOR = 25}
+	IF(ZIPVAR=99841){ SET QBOR = 25}
+
+	IF(ZIPVAR=99840){ SET QBOR = 26}
+
+	IF(ZIPVAR=99830){ SET QBOR = 27}
+	IF(ZIPVAR=99833){ SET QBOR = 27}
+	IF(ZIPVAR=99836){ SET QBOR = 27}
+	IF(ZIPVAR=99929){ SET QBOR = 27}
+
+	IF(ZIPVAR=99689){ SET QBOR = 28}
+
+	IF(ZIPVAR=99501) { SET QMUN = 1}
+	IF(ZIPVAR=99502) { SET QMUN = 1}
+	IF(ZIPVAR=99503) { SET QMUN = 1}
+	IF(ZIPVAR=99504) { SET QMUN = 1}
+	IF(ZIPVAR=99505) { SET QMUN = 2}
+	IF(ZIPVAR=99506) { SET QMUN = 3}
+	IF(ZIPVAR=99507) { SET QMUN = 1}
+	IF(ZIPVAR=99508) { SET QMUN = 1}
+	IF(ZIPVAR=99509) { SET QMUN = 1}
+	IF(ZIPVAR=99510) { SET QMUN = 1}
+	IF(ZIPVAR=99511) { SET QMUN = 1}
+	IF(ZIPVAR=99513) { SET QMUN = 1}
+	IF(ZIPVAR=99514) { SET QMUN = 1}
+	IF(ZIPVAR=99515) { SET QMUN = 1}
+	IF(ZIPVAR=99516) { SET QMUN = 1}
+	IF(ZIPVAR=99517) { SET QMUN = 1}
+	IF(ZIPVAR=99518) { SET QMUN = 1}
+	IF(ZIPVAR=99519) { SET QMUN = 1}
+	IF(ZIPVAR=99520) { SET QMUN = 1}
+	IF(ZIPVAR=99521) { SET QMUN = 1}
+	IF(ZIPVAR=99522) { SET QMUN = 1}
+	IF(ZIPVAR=99523) { SET QMUN = 1}
+	IF(ZIPVAR=99524) { SET QMUN = 1}
+	IF(ZIPVAR=99529) { SET QMUN = 1}
+	IF(ZIPVAR=99530) { SET QMUN = 1}
+	IF(ZIPVAR=99540) { SET QMUN = 4}
+	IF(ZIPVAR=99545) { SET QMUN = 76}
+	IF(ZIPVAR=99546) { SET QMUN = 69}
+	IF(ZIPVAR=99547) { SET QMUN = 70}
+	IF(ZIPVAR=99548) { SET QMUN = 113}
+	IF(ZIPVAR=99549) { SET QMUN = 114}
+	IF(ZIPVAR=99550) { SET QMUN = 58}
+	IF(ZIPVAR=99551) { SET QMUN = 77}
+	IF(ZIPVAR=99552) { SET QMUN = 78}
+	IF(ZIPVAR=99553) { SET QMUN = 64}
+	IF(ZIPVAR=99554) { SET QMUN = 159}
+	IF(ZIPVAR=99555) { SET QMUN = 106}
+	IF(ZIPVAR=99556) { SET QMUN = 14}
+	IF(ZIPVAR=99557) { SET QMUN = 79}
+	IF(ZIPVAR=99558) { SET QMUN = 171}
+	IF(ZIPVAR=99559) { SET QMUN = 80}
+	IF(ZIPVAR=99561) { SET QMUN = 81}
+	IF(ZIPVAR=99563) { SET QMUN = 160}
+	IF(ZIPVAR=99564) { SET QMUN = 115}
+	IF(ZIPVAR=99565) { SET QMUN = 116}
+	IF(ZIPVAR=99566) { SET QMUN = 43}
+	IF(ZIPVAR=99567) { SET QMUN = 5}
+	IF(ZIPVAR=99568) { SET QMUN = 15}
+	IF(ZIPVAR=99569) { SET QMUN = 107}
+	IF(ZIPVAR=99571) { SET QMUN = 65}
+	IF(ZIPVAR=99572) { SET QMUN = 16}
+	IF(ZIPVAR=99573) { SET QMUN = 44}
+	IF(ZIPVAR=99574) { SET QMUN = 45}
+	IF(ZIPVAR=99575) { SET QMUN = 82}
+	IF(ZIPVAR=99576) { SET QMUN = 108}
+	IF(ZIPVAR=99577) { SET QMUN = 5}
+	IF(ZIPVAR=99578) { SET QMUN = 83}
+	IF(ZIPVAR=99579) { SET QMUN = 117}
+	IF(ZIPVAR=99580) { SET QMUN = 109}
+	IF(ZIPVAR=99581) { SET QMUN = 161}
+	IF(ZIPVAR=99583) { SET QMUN = 66}
+	IF(ZIPVAR=99585) { SET QMUN = 162}
+	IF(ZIPVAR=99586) { SET QMUN = 46}
+	IF(ZIPVAR=99587) { SET QMUN = 6}
+	IF(ZIPVAR=99588) { SET QMUN = 47}
+	IF(ZIPVAR=99589) { SET QMUN = 84}
+	IF(ZIPVAR=99590) { SET QMUN = 172}
+	IF(ZIPVAR=99591) { SET QMUN = 71}
+	IF(ZIPVAR=99599) { SET QMUN = 1}
+	IF(ZIPVAR=99602) { SET QMUN = 173}
+	IF(ZIPVAR=99603) { SET QMUN = 17}
+	IF(ZIPVAR=99604) { SET QMUN = 163}
+	IF(ZIPVAR=99605) { SET QMUN = 18}
+	IF(ZIPVAR=99606) { SET QMUN = 118}
+	IF(ZIPVAR=99607) { SET QMUN = 85}
+	IF(ZIPVAR=99608) { SET QMUN = 59}
+	IF(ZIPVAR=99609) { SET QMUN = 86}
+	IF(ZIPVAR=99610) { SET QMUN = 19}
+	IF(ZIPVAR=99611) { SET QMUN = 20}
+	IF(ZIPVAR=99612) { SET QMUN = 67}
+	IF(ZIPVAR=99613) { SET QMUN = 103}
+	IF(ZIPVAR=99614) { SET QMUN = 87}
+	IF(ZIPVAR=99615) { SET QMUN = 60}
+	IF(ZIPVAR=99619) { SET QMUN = 60}
+	IF(ZIPVAR=99620) { SET QMUN = 164}
+	IF(ZIPVAR=99621) { SET QMUN = 88}
+	IF(ZIPVAR=99622) { SET QMUN = 89}
+	IF(ZIPVAR=99623) { SET QMUN = 29}
+	IF(ZIPVAR=99624) { SET QMUN = 61}
+	IF(ZIPVAR=99625) { SET QMUN = 119}
+	IF(ZIPVAR=99626) { SET QMUN = 90}
+	IF(ZIPVAR=99627) { SET QMUN = 174}
+	IF(ZIPVAR=99628) { SET QMUN = 110}
+	IF(ZIPVAR=99629) { SET QMUN = 29}
+	IF(ZIPVAR=99630) { SET QMUN = 91}
+	IF(ZIPVAR=99631) { SET QMUN = 21}
+	IF(ZIPVAR=99632) { SET QMUN = 165}
+	IF(ZIPVAR=99633) { SET QMUN = 104}
+	IF(ZIPVAR=99634) { SET QMUN = 92}
+	IF(ZIPVAR=99635) { SET QMUN = 22}
+	IF(ZIPVAR=99636) { SET QMUN = 111}
+	IF(ZIPVAR=99637) { SET QMUN = 93}
+	IF(ZIPVAR=99638) { SET QMUN = 72}
+	IF(ZIPVAR=99639) { SET QMUN = 23}
+	IF(ZIPVAR=99640) { SET QMUN = 120}
+	IF(ZIPVAR=99641) { SET QMUN = 94}
+	IF(ZIPVAR=99643) { SET QMUN = 62}
+	IF(ZIPVAR=99644) { SET QMUN = 63}
+	IF(ZIPVAR=99645) { SET QMUN = 30}
+	IF(ZIPVAR=99647) { SET QMUN = 121}
+	IF(ZIPVAR=99648) { SET QMUN = 122}
+	IF(ZIPVAR=99649) { SET QMUN = 123}
+	IF(ZIPVAR=99650) { SET QMUN = 166}
+	IF(ZIPVAR=99651) { SET QMUN = 95}
+	IF(ZIPVAR=99652) { SET QMUN = 31}
+	IF(ZIPVAR=99653) { SET QMUN = 124}
+	IF(ZIPVAR=99654) { SET QMUN = 29}
+	IF(ZIPVAR=99655) { SET QMUN = 96}
+	IF(ZIPVAR=99656) { SET QMUN = 97}
+	IF(ZIPVAR=99657) { SET QMUN = 167}
+	IF(ZIPVAR=99658) { SET QMUN = 168}
+	IF(ZIPVAR=99659) { SET QMUN = 125}
+	IF(ZIPVAR=99660) { SET QMUN = 73}
+	IF(ZIPVAR=99661) { SET QMUN = 68}
+	IF(ZIPVAR=99662) { SET QMUN = 169}
+	IF(ZIPVAR=99663) { SET QMUN = 24}
+	IF(ZIPVAR=99664) { SET QMUN = 25}
+	IF(ZIPVAR=99665) { SET QMUN = 175}
+	IF(ZIPVAR=99666) { SET QMUN = 170}
+	IF(ZIPVAR=99667) { SET QMUN = 32}
+	IF(ZIPVAR=99668) { SET QMUN = 98}
+	IF(ZIPVAR=99669) { SET QMUN = 26}
+	IF(ZIPVAR=99670) { SET QMUN = 105}
+	IF(ZIPVAR=99671) { SET QMUN = 126}
+	IF(ZIPVAR=99672) { SET QMUN = 27}
+	IF(ZIPVAR=99674) { SET QMUN = 33}
+	IF(ZIPVAR=99675) { SET QMUN = 176}
+	IF(ZIPVAR=99676) { SET QMUN = 34}
+	IF(ZIPVAR=99677) { SET QMUN = 48}
+	IF(ZIPVAR=99678) { SET QMUN = 112}
+	IF(ZIPVAR=99679) { SET QMUN = 99}
+	IF(ZIPVAR=99680) { SET QMUN = 100}
+	IF(ZIPVAR=99681) { SET QMUN = 101}
+	IF(ZIPVAR=99682) { SET QMUN = 28}
+	IF(ZIPVAR=99683) { SET QMUN = 35}
+	IF(ZIPVAR=99684) { SET QMUN = 127}
+	IF(ZIPVAR=99685) { SET QMUN = 74}
+	IF(ZIPVAR=99686) { SET QMUN = 49}
+	IF(ZIPVAR=99687) { SET QMUN = 29}
+	IF(ZIPVAR=99688) { SET QMUN = 36}
+	IF(ZIPVAR=99689) { SET QMUN = 228}
+	IF(ZIPVAR=99690) { SET QMUN = 102}
+	IF(ZIPVAR=99691) { SET QMUN = 177}
+	IF(ZIPVAR=99692) { SET QMUN = 75}
+	IF(ZIPVAR=99693) { SET QMUN = 50}
+	IF(ZIPVAR=99694) { SET QMUN = 37}
+	IF(ZIPVAR=99695) { SET QMUN = 1}
+	IF(ZIPVAR=99697) { SET QMUN = 60}
+	IF(ZIPVAR=99701) { SET QMUN = 7}
+	IF(ZIPVAR=99702) { SET QMUN = 8}
+	IF(ZIPVAR=99703) { SET QMUN = 9}
+	IF(ZIPVAR=99704) { SET QMUN = 38}
+	IF(ZIPVAR=99705) { SET QMUN = 10}
+	IF(ZIPVAR=99706) { SET QMUN = 7}
+	IF(ZIPVAR=99707) { SET QMUN = 7}
+	IF(ZIPVAR=99708) { SET QMUN = 7}
+	IF(ZIPVAR=99709) { SET QMUN = 7}
+	IF(ZIPVAR=99710) { SET QMUN = 7}
+	IF(ZIPVAR=99711) { SET QMUN = 7}
+	IF(ZIPVAR=99712) { SET QMUN = 7}
+	IF(ZIPVAR=99714) { SET QMUN = 11}
+	IF(ZIPVAR=99716) { SET QMUN = 12}
+	IF(ZIPVAR=99720) { SET QMUN = 178}
+	IF(ZIPVAR=99721) { SET QMUN = 139}
+	IF(ZIPVAR=99722) { SET QMUN = 179}
+	IF(ZIPVAR=99723) { SET QMUN = 140}
+	IF(ZIPVAR=99724) { SET QMUN = 180}
+	IF(ZIPVAR=99725) { SET QMUN = 13}
+	IF(ZIPVAR=99726) { SET QMUN = 181}
+	IF(ZIPVAR=99727) { SET QMUN = 148}
+	IF(ZIPVAR=99729) { SET QMUN = 39}
+	IF(ZIPVAR=99730) { SET QMUN = 182}
+	IF(ZIPVAR=99731) { SET QMUN = 51}
+	IF(ZIPVAR=99732) { SET QMUN = 52}
+	IF(ZIPVAR=99733) { SET QMUN = 183}
+	IF(ZIPVAR=99734) { SET QMUN = 141}
+	IF(ZIPVAR=99736) { SET QMUN = 149}
+	IF(ZIPVAR=99737) { SET QMUN = 53}
+	IF(ZIPVAR=99738) { SET QMUN = 54}
+	IF(ZIPVAR=99739) { SET QMUN = 128}
+	IF(ZIPVAR=99740) { SET QMUN = 184}
+	IF(ZIPVAR=99741) { SET QMUN = 185}
+	IF(ZIPVAR=99742) { SET QMUN = 129}
+	IF(ZIPVAR=99743) { SET QMUN = 40}
+	IF(ZIPVAR=99744) { SET QMUN = 41}
+	IF(ZIPVAR=99745) { SET QMUN = 186}
+	IF(ZIPVAR=99746) { SET QMUN = 187}
+	IF(ZIPVAR=99747) { SET QMUN = 142}
+	IF(ZIPVAR=99748) { SET QMUN = 188}
+	IF(ZIPVAR=99749) { SET QMUN = 150}
+	IF(ZIPVAR=99750) { SET QMUN = 151}
+	IF(ZIPVAR=99751) { SET QMUN = 152}
+	IF(ZIPVAR=99752) { SET QMUN = 153}
+	IF(ZIPVAR=99753) { SET QMUN = 130}
+	IF(ZIPVAR=99754) { SET QMUN = 189}
+	IF(ZIPVAR=99755) { SET QMUN = 42}
+	IF(ZIPVAR=99756) { SET QMUN = 190}
+	IF(ZIPVAR=99757) { SET QMUN = 191}
+	IF(ZIPVAR=99758) { SET QMUN = 192}
+	IF(ZIPVAR=99759) { SET QMUN = 143}
+	IF(ZIPVAR=99760) { SET QMUN = 193}
+	IF(ZIPVAR=99761) { SET QMUN = 154}
+	IF(ZIPVAR=99762) { SET QMUN = 131}
+	IF(ZIPVAR=99763) { SET QMUN = 155}
+	IF(ZIPVAR=99764) { SET QMUN = 55}
+	IF(ZIPVAR=99765) { SET QMUN = 194}
+	IF(ZIPVAR=99766) { SET QMUN = 144}
+	IF(ZIPVAR=99767) { SET QMUN = 195}
+	IF(ZIPVAR=99768) { SET QMUN = 196}
+	IF(ZIPVAR=99769) { SET QMUN = 132}
+	IF(ZIPVAR=99770) { SET QMUN = 156}
+	IF(ZIPVAR=99771) { SET QMUN = 133}
+	IF(ZIPVAR=99772) { SET QMUN = 134}
+	IF(ZIPVAR=99773) { SET QMUN = 157}
+	IF(ZIPVAR=99774) { SET QMUN = 197}
+	IF(ZIPVAR=99775) { SET QMUN = 7}
+	IF(ZIPVAR=99776) { SET QMUN = 56}
+	IF(ZIPVAR=99777) { SET QMUN = 198}
+	IF(ZIPVAR=99778) { SET QMUN = 135}
+	IF(ZIPVAR=99779) { SET QMUN = 57}
+	IF(ZIPVAR=99780) { SET QMUN = 57}
+	IF(ZIPVAR=99781) { SET QMUN = 199}
+	IF(ZIPVAR=99782) { SET QMUN = 145}
+	IF(ZIPVAR=99783) { SET QMUN = 136}
+	IF(ZIPVAR=99784) { SET QMUN = 137}
+	IF(ZIPVAR=99785) { SET QMUN = 138}
+	IF(ZIPVAR=99786) { SET QMUN = 158}
+	IF(ZIPVAR=99788) { SET QMUN = 200}
+	IF(ZIPVAR=99789) { SET QMUN = 146}
+	IF(ZIPVAR=99790) { SET QMUN = 7}
+	IF(ZIPVAR=99791) { SET QMUN = 147}
+	IF(ZIPVAR=99801) { SET QMUN = 202}
+	IF(ZIPVAR=99802) { SET QMUN = 202}
+	IF(ZIPVAR=99803) { SET QMUN = 202}
+	IF(ZIPVAR=99811) { SET QMUN = 202}
+	IF(ZIPVAR=99812) { SET QMUN = 202}
+	IF(ZIPVAR=99820) { SET QMUN = 217}
+	IF(ZIPVAR=99821) { SET QMUN = 203}
+	IF(ZIPVAR=99824) { SET QMUN = 204}
+	IF(ZIPVAR=99825) { SET QMUN = 218}
+	IF(ZIPVAR=99826) { SET QMUN = 219}
+	IF(ZIPVAR=99827) { SET QMUN = 201}
+	IF(ZIPVAR=99829) { SET QMUN = 220}
+	IF(ZIPVAR=99830) { SET QMUN = 224}
+	IF(ZIPVAR=99832) { SET QMUN = 221}
+	IF(ZIPVAR=99833) { SET QMUN = 225}
+	IF(ZIPVAR=99835) { SET QMUN = 216}
+	IF(ZIPVAR=99836) { SET QMUN = 226}
+	IF(ZIPVAR=99840) { SET QMUN = 223}
+	IF(ZIPVAR=99841) { SET QMUN = 222}
+	IF(ZIPVAR=99850) { SET QMUN = 202}
+	IF(ZIPVAR=99901) { SET QMUN = 205}
+	IF(ZIPVAR=99903) { SET QMUN = 207}
+	IF(ZIPVAR=99918) { SET QMUN = 208}
+	IF(ZIPVAR=99919) { SET QMUN = 209}
+	IF(ZIPVAR=99921) { SET QMUN = 210}
+	IF(ZIPVAR=99922) { SET QMUN = 211}
+	IF(ZIPVAR=99923) { SET QMUN = 212}
+	IF(ZIPVAR=99925) { SET QMUN = 213}
+	IF(ZIPVAR=99926) { SET QMUN = 214}
+	IF(ZIPVAR=99927) { SET QMUN = 215}
+	IF(ZIPVAR=99928) { SET QMUN = 206}
+	IF(ZIPVAR=99929) { SET QMUN = 227}
+	IF(ZIPVAR=99950) { SET QMUN = 205}
+
+	UNSET iBitQbo
+	SET iBitQbo = NBIT(QBOR)
+
+COMMENT ============================= ZIPVER ==================================
+	IF (iBitQZIP = 6 ){
+
+ZIPVER	ASK '
+ '+ON+ZIPVAR+OFF+' is not a valid Alaska zip code.@
+ Are you sure that''s what your zip is?@'
+	RESP SP LSYN
+
+		UNSET iBitZV
+		SET iBitZV = NBIT(ZIPVER)
+
+		IF(iBitZV = 2){GOTO PRES1}
+		IF(iBitZV = 1){
+			SET COMP = 6
+			SET QTIPCODE = 64
+			GOTO PRETERM
+		}
+	}
+
+COMMENT ===========================    OVERQUOTA Q1  ===========================
+
+QSAM	DUMMYASK 'HOLDS IF OVERSAMPLE@'
+	RESP SP 
+		'BASE SAMPLE' /
+		'OVERSAMPLE' FORCE(5)
+
+	UNSET QSAM
+	SET   QSAM = 1
+
+
+	IF(iBitCond >= 75 .AND. iBitQZIP = 1) { SET QSAM = 2 }
+	IF(iBitCond >= 40 .AND. iBitQbo = 4)  { SET QSAM = 2 }
+
+	UNSET iBitQsam
+	SET iBitQsam = NBIT(QSAM)
+
+
+	QUOTA QBOR/QSAM FILE='q1' PASS=OK1
+
+	IF (.NOT. OK1) {
+
+OVERQ1	DISPLAY '
+Those are all the questions I have today. Thank you for participating in 
+ our survey.
+@*(STOP READING)*@
+@We are done for this quota cell: 
+'+ON+'@Borough: '+QBOR+' '+QSAM+OFF+'.'
+	PAUSE
+
+		SET COMP = 17
+		SET QTIPCODE=90
+		SET SMSVAR = 'TEMPCODE'
+		CALLFUNC('putsmvar',SMSVAR,QTIPCODE)
+		SIGNAL 2
+	}
+
+COMMENT ======== HOLDS VALUE MUNINIPALITY AND OVERSAMPLE ======================
+
+LSQMOVE	DEFINE
+	'ANC BASE'/
+	'ANC OS'/
+	'MATSU BASE'/
+	'MATSU OS'/
+	'FBX BASE'/
+	'FBX OS'/
+	'THE REST'
+
+QMOVE	DUMMYASK 'HOLS VALUE MUNICIPALITY - OVERSAMPLE@'
+	RESP SP LSQMOVE FORCE(6)
+
+	UNSET QMOVE
+	SET QMOVE = 7
+
+	IF(iBitQZIP = 1){SET QMOVE =1}
+	IF(iBitQZIP = 1 .AND. iBitQsam = 2){SET QMOVE =2}
+	IF(iBitQbo = 4){SET QMOVE =3}
+	IF(iBitQbo = 4 .AND. iBitQsam = 2){SET QMOVE =4}
+	IF(iBitQZIP = 2){SET QMOVE =5}
+	IF(iBitQZIP = 2 .AND. iBitQsam = 2){SET QMOVE =6 }
+
+	UNSET iBitQmov
+	SET iBitQmov = NBIT(QMOVE)
+
+
+COMMENT ============================= QS2 =====================================
+
+QS2 ASK'
+You live in '+QMUN+', is that correct?@'
+	RESP SP LSYN
+
+	UNSET iBitQS2
+	SET iBitQS2 = NBIT(QS2)
+
+	IF(iBitQS2 = 1){GOTO PREMAIN}
+
+COMMENT ============================= QS3 =====================================
+
+QS3 ASK'
+Do you live in the '+QBOR+'?@
+(*IF NO), '+ZIPVAR+' is the zip code for '+QMUN+'.  Are you sure 
+that''s what your zip is?  ENGAGE WITH RESPONDENT TO DETERMINE CORRECT ZIP.@'
+	RESP SP LSYN
+
+	UNSET iBitQS3
+	SET iBitQS3 = NBIT(QS3)
+
+	IF(iBitQS3 = 1){GOTO PREMAIN}
+	IF(iBitQS3 = 2){GOTO PRES1}
+
+	UNSET iBitQZIP
+	SET iBitQZIP=NBIT(ZIPDUM)
+
+COMMENT =======================================================================
+COMMENT ============================= SCREENER END ============================
+COMMENT =======================================================================
+
+
+COMMENT =======================================================================
+COMMENT ============================= MAIN QRE BEGIN ==========================
+COMMENT =======================================================================
+
+PREMAIN CONTINUE
+
+COMMENT JUAN: ZIPCODES CERRADOS
+
+	
+
+
+COMMENT ============================= QUITOK ==================================
+
+QUITOK	DUMMYASK '
+(INTERVIEWER: It is now ok to use "quit" if necessary@@'
+	RESP SP 'CONTINUE' FORCE( 3 )
+	SET QUITOK = 1
+
+COMMENT ============================= Q1 ======================================
+
+Q1 ASK '
+We''d like you to grade how you feel about how the economy is doing in 
+Alaska, and in your community.  On a scale from 1 to 5, how would you rate 
+current economic conditions in your community, where a 5 is very good and a 
+1 is very bad?@@
+*(DO NOT READ)* DON''T KNOW (PROBE FOR LEANING)... CODE AS 8@
+*(DO NOT READ)* REFUSED CODE AS 9@
+@@
+@    VERY                                             VERY        DK    REF
+@    BAD                                              GOOD                 
+@     1............2..............3..........4..........5..........8.....9@
+'
+	RESP NUM 1 TO 5/8 TO 9
+
+COMMENT ============================= Q2 ======================================
+
+LSQ2 DEFINE
+	'GETTING BETTER'/
+	'GETTING WORSE'/
+	'STAYING THE SAME'/
+	'PH04'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBLSQ2 DEFINE
+	'GETTING BETTER'/
+	'GETTING WORSE'/
+	'STAYING THE SAME'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+Q2 ASK '
+Do you think the economy in your community right now is getting better, 
+getting worse, or staying about the same?@
+'
+	RESP SP SUBLSQ2 IN LSQ2
+
+
+COMMENT ============================= Q3 ======================================
+
+Q3 ASK'
+On a scale from 1 to 5, how would you rate current economic conditions in 
+ALASKA AS A WHOLE, where a 5 is very good and a 1 is very bad?@@
+*(DO NOT READ)* DON''T KNOW (PROBE FOR LEANING)... CODE AS 8@
+*(DO NOT READ)* REFUSED CODE AS 9@
+@@
+@    VERY                                             VERY        DK    REF
+@    BAD                                              GOOD                 
+@     1............2..............3..........4..........5..........8.....9@
+'
+	RESP NUM 1 TO 5/8 TO 9
+
+COMMENT ============================= Q4 ======================================
+
+LSQ4 DEFINE
+	'GETTING BETTER'/
+	'GETTING WORSE'/
+	'STAYING THE SAME'/
+	'PH04'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBLSQ4 DEFINE
+	'GETTING BETTER'/
+	'GETTING WORSE'/
+	'STAYING THE SAME'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+Q4 ASK'
+And do you think the economy in Alaska as a whole right now is getting 
+better, getting worse or staying about the same?@
+'
+	RESP SP SUBLSQ4 IN LSQ4
+
+COMMENT ============================= Q5 ======================================
+
+Q5 ASK '
+On a scale from 1 to 5, how secure do you feel about your and your 
+family''s financial situation, where a 5 is very secure and a 1 is not secure at 
+all?@@
+*(DO NOT READ)* DON''T KNOW (PROBE FOR LEANING)... CODE AS 8@
+*(DO NOT READ)* REFUSED CODE AS 9@
+@@
+@ NOT SECURE                                           VERY        DK    REF
+@   AT ALL                                            SECURE                 
+@     1............2..............3...........4..........5..........8......9@
+'
+	RESP NUM 1 TO 5/8 TO 9
+
+COMMENT ============================= Q6 ======================================
+
+LSQ6 DEFINE
+	'GETTING BETTER'/
+	'GETTING WORSE'/
+	'STAYING THE SAME'/
+	'PH04'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBLSQ6 DEFINE
+	'GETTING BETTER'/
+	'GETTING WORSE'/
+	'STAYING THE SAME'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+Q6 ASK'
+And would you say your and your family''s financial situation is getting 
+better, getting worse or staying about the same?@
+'
+	RESP SP SUBLSQ6 IN LSQ6
+
+
+
+	IF(iBitQZIP = 1 .AND. iBitCond >= 75){GOTO PREQ8S}
+	IF(iBitQbo = 4 .AND. iBitCond >= 40 ){GOTO PREQ8S}
+
+
+COMMENT ============================= Q7A ======================================
+
+
+Q7A ASK'
+I''d now like to ask you a few questions about the coronavirus situation. On a 
+scale from 1 to 5, how serious a threat do you think the coronavirus outbreak 
+is to public health in the United States where a 5 is a very serious threat and 
+a 1 is not a threat at all?@
+*(DO NOT READ)* DON''T KNOW (PROBE FOR LEANING)... CODE AS 8@
+*(DO NOT READ)* REFUSED CODE AS 9@
+@ Not a                                           Very   DON''T KNOW  REFUSED 
+@ Threat                                         Serious  (PROBE FOR
+@ at all                                         Threat    LEANING)           
+@   1..........2.............3...........4.........5..........8..........9    @'
+	RESP NUM 1 To 5/8/9
+
+
+
+COMMENT ============================= Q7B ======================================
+
+Q7B ASK'
+On a scale from 1 to 5, how serious a threat do you think the coronavirus outbreak 
+is to public health in Alaska?@
+*(DO NOT READ)* DON''T KNOW (PROBE FOR LEANING)... CODE AS 8@
+*(DO NOT READ)* REFUSED CODE AS 9@
+@ Not a                                           Very   DON''T KNOW  REFUSED 
+@ Threat                                         Serious  (PROBE FOR
+@ at all                                         Threat    LEANING)           
+@   1..........2.............3...........4.........5..........8..........9    @'
+	RESP NUM 1 To 5/8/9
+
+COMMENT ============================= Q7C ======================================
+
+Q7C ASK'
+And on a scale from 1 to 5, how serious a threat do you think the coronavirus 
+outbreak is to public health in your community?@
+*(DO NOT READ)* DON''T KNOW (PROBE FOR LEANING)... CODE AS 8@
+*(DO NOT READ)* REFUSED CODE AS 9@
+@ Not a                                           Very   DON''T KNOW  REFUSED 
+@ Threat                                         Serious  (PROBE FOR
+@ at all                                         Threat    LEANING)           
+@   1..........2.............3...........4.........5..........8..........9    @'
+	RESP NUM 1 To 5/8/9
+
+COMMENT ============================= Q7D ======================================
+
+LSQ7D DEFINE
+	'COMPLETELY'/
+	'MOSTLY'/
+	'PARTLY'/
+	'A LITTLE'/
+	'NOT AT ALL'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBLQ7D DEFINE
+	'COMPLETELY'/
+	'MOSTLY'/
+	'PARTLY'/
+	'A LITTLE'/
+	'NOT AT ALL'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+Q7D ASK'
+To what extent are you personally practicing social distancing, i.e. changing your 
+behavior to minimize interactions with other people outside your home, completely, 
+mostly, partly, a little, or not at all?@'
+	RESP SP SUBLQ7D IN LSQ7D
+
+COMMENT ============================= Q7E ======================================
+
+Q7E ASK'
+And again on a scale from 1 to 5, how would you rate the morale in your household 
+right now, where a 5 is very good and a 1 is not good?@
+*(DO NOT READ)* DON''T KNOW (PROBE FOR LEANING)... CODE AS 8@
+*(DO NOT READ)* REFUSED CODE AS 9@
+@ Not a                                           Very   DON''T KNOW  REFUSED 
+@ Threat                                         Serious  (PROBE FOR
+@ at all                                         Threat    LEANING)           
+@   1..........2.............3...........4.........5..........8..........9    @'
+	RESP NUM 1 To 5/8/9
+
+COMMENT ============================= Q8A =====================================
+PREQ8S CONTINUE
+
+
+
+
+
+LSQ8A DEFINE
+	'YES'/
+	'NO'/
+	'PH03'/
+	'PH04'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBLSQ8A DEFINE
+	'YES'/
+	'NO'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+
+Q8A ASK'
+Are you registered to vote in the State of Alaska?@'
+	RESP SP SUBLSQ8A IN LSQ8A
+
+	UNSET iBitQ8A
+	SET iBitQ8A = NBIT(Q8A)
+
+	IF(iBitQ8A > 1){GOTO PREQ9S}
+
+
+
+	IF(iBitQZIP = 1 .AND. iBitCond >= 75){GOTO PREQ10S}
+	IF(iBitQbo = 4 .AND. iBitCond >= 40){GOTO PREQ9S}
+
+
+COMMENT ============================= Q8B =====================================
+	IF(iBitQ8A = 1){
+LSQ8B DEFINE
+	'Mike Dunleavy    (DUN-LEVVY)'/
+	'Don Young'/
+	'Lisa Murkowski   (MER-COW-SKI)'/
+	'Mark Begich      (BAY-GITCH)'/
+	'Us Senator Dan Sullivan'/
+	'Ethan Berkowitz  (BUR-KO-WITS)'/
+	'Donald Trump'/
+	'Nicholas Begich'/
+	'Alyse Galvin (A-LEESE)' 
+	
+
+	UNSET FLAGS
+	SET FLAGS = 0
+
+Q8DUM DUMMYASK 'HOLD FIRST BEGICH'
+	RESP SP 
+		'Nicholas Begich'/
+		'Mark Begich'
+
+	UNSET FLAG 
+	SET FLAG = 0
+
+	For iVarQ8 = LSQ8B RAN
+		SET IT = ITERATION
+		IF(FLAG = 0){
+		IF(IT = 8){SET Q8DUM = 1 SET FLAG =1}
+		IF(IT = 4){SET Q8DUM = 2 SET FLAG =1}
+	}
+
+Q8B ASK'
+I''m now going to read you the names of some public figures.  Please tell me 
+whether your feelings towards them are very positive, somewhat positive, somewhat 
+negative or very negative, or if you have never heard of them?@
+'+ON+iVarQ8+OFF+'
+@@
+@    VERY       SOMEWHAT                  SOMEWHAT      VERY      NEVER 
+@  POSITIVE     POSITIVE      NEUTRAL     NEGATI1VE    NEGATIVE    HEARD 
+@     4            3            2            1           0          8   
+@'
+	RESP NUM 0 TO 4/8
+	UNSET iBitQ8B(*)
+	SET iBitQ8B(*) = Q8B(*) 
+	IF(iBitQ8B(8) = 8){SET FLAGS = 1}
+	NEXT
+	IF(FLAGS = 1){GOTO PREQ8D}
+	}
+COMMENT ============================= Q8C =====================================
+
+LSQ8C DEFINE
+	'REPUBLICAN'/
+	'DEMOCRAT'/
+	'PH03'/
+	'PH04'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBLSQ8C DEFINE
+	'REPUBLICAN'/
+	'DEMOCRAT'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+
+Q8C ASK'
+To the best of your knowledge, is Nicholas Begich a Republican or a Democrat?@'
+	RESP SP SUBLSQ8C IN LSQ8C
+
+COMMENT ============================= Q8D =====================================
+PREQ8D CONTINUE
+LSQ8D DEFINE
+	'APPROVE'/
+	'DISAPPROVE'/
+	'PH03'/
+	'PH04'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBLSQ8D DEFINE
+	'APPROVE'/
+	'DISAPPROVE'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+Q8D ASK'
+Do you approve or disapprove of the job Mike Dunleavy is doing as Alaska Governor?@'
+	RESP SP SUBLSQ8D IN LSQ8D
+
+COMMENT ============================= Q8E =====================================
+
+Q8E ASK '
+Do you approve or disapprove of the job Donald  Trump is doing as President?'
+	RESP SP SUBLSQ8D IN LSQ8D
+
+
+COMMENT ============================= Q8F =====================================
+
+LSQ8F DEFINE
+	'CERTAIN'/
+	'VERY LIKELY'/
+	'SOMEWHAT LIKELY'/
+	'NOT LIKELY'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DONT KNOW'/
+	'REFUSED'
+
+SUBLSQ8F DEFINE
+	'CERTAIN'/
+	'VERY LIKELY'/
+	'SOMEWHAT LIKELY'/
+	'NOT LIKELY'/
+	'DONT KNOW'/
+	'REFUSED'
+	
+
+Q8F ASK '
+How likely are you to vote in the Alaska general election to be held in November 
+2020?  Would you say you''re absolutely certain, very likely, somewhat likely or 
+not likely?@'
+	RESP SP SUBLSQ8F IN LSQ8F
+
+	UNSET iBitQ8F
+	SET iBitQ8F = NBIT(Q8F)
+
+COMMENT ============================= Q8G =====================================
+	IF(iBitQ8F < 3 ){
+LSQ8G DEFINE
+	'Alyse Galvin, Independent'/
+	'Don Young, Republican'/
+	'PH03'/
+	'PH04'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DONT KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBLSQ8G DEFINE
+	'Alyse Galvin, Independent'/
+	'Don Young, Republican'/
+	'DONT KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+
+Q8G ASK '
+If the 2020 General election for US Congress was held today, and the candidates were 
+(READ RANDOMIZED LIST), for whom would you vote for US Congress?'
+	RESP SP SUBLSQ8G IN LSQ8G
+}
+	
+
+COMMENT ============================= Q8H =====================================
+LSQ8H DEFINE
+	'YES'/
+	'NO'/
+	'PH03'/
+	'PH04'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DONT KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBLSQ8H DEFINE
+	'YES'/
+	'NO'/
+	'DONT KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+Q8H ASK '
+If a special election was held for the recall of Governor Dunleavy, would you 
+vote yes or no to recall?@'
+	RESP SP SUBLSQ8H IN LSQ8H
+
+
+COMMENT ========== 9 & 10 SERIES: MUNICIPALITY OF ANCHORAGE ONLY ==============
+PREQ9S CONTINUE
+	IF(iBitQbo = 4){GOTO PREQ9A}
+	IF(iBitQZIP = 2 .OR. iBitQbo = 3 .OR. iBitQbo = 22 .OR. iBitQbo = 21 .OR. iBitQbo = 24 ){GOTO PREQ11S}
+	IF(iBitQZIP = 1 ){GOTO PREQ10S}
+	IF(iBitQZIP = 3){GOTO PREQ12S}
+	IF(iBitQZIP = 5){GOTO PREQ13S}
+	IF(iBitQZIP = 4){GOTO PREQ12S}
+
+COMMENT ============================= Q9A =====================================
+PREQ9A CONTINUE
+
+Q9A ASK'
+Have you ever heard of an organization called the MatSu Health Foundation?@'
+	RESP SP SUBLSQ8H IN LSQ8H
+
+COMMENT ============================= Q9B =====================================
+
+Q9B ASK '
+Have you ever heard of a community program called ROCK MatSu, a collaborative 
+of community members joining together to reduce child maltreatment?@'
+	RESP SP SUBLSQ8H IN LSQ8H
+
+COMMENT ============================= Q9C =====================================
+
+Q9C ASK'
+Have you ever heard of a new community resource center called Connect Mat-Su?@'
+	RESP SP SUBLSQ8H IN LSQ8H
+
+
+	IF(iBitQbo = 4 .AND. iBitCond >=40 ){GOTO PREDEMOS}
+
+
+COMMENT ============================= Q10A =====================================
+PREQ10S CONTINUE
+
+	IF(iBitQbo = 4){GOTO PREQ11S}
+
+LSQ10A DEFINE
+	'YES'/
+	'NO'/
+	'PH03'/
+	'PH04'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW'/
+	'REFUSED'
+
+SUBLS10A DEFINE
+	'YES'/
+	'NO'/
+	'DON''T KNOW'/
+	'REFUSED'
+
+PREQ10A	CONTINUE
+
+Q10A ASK '
+In the last 90 days, have you seen, heard or read any ads, messages or 
+information related to the topic of the prevention of bullying?@'
+	RESP SP SUBLS10A IN LSQ10A
+
+
+
+COMMENT ============================= Q10B =====================================
+
+LSQ10B DEFINE
+	'Bullying can sometimes be accidental'/
+	'Excluding someone on purpose can be a form of bullying'/
+	'Most bullying incidents are isolated and probably won''t happen again'/
+	'Friendly teasing doesn''t count as bullying'/
+	'People who get bullied likely end up tougher in the long run'/
+	'Bullying always has some kind of physical element to it'/
+	'Spreading rumors about someone can count as bullying'/
+	'People who bully do it to gain power'
+
+PREQ10B CONTINUE
+
+	FOR iVarQ10B = LSQ10B RAN
+
+Q10B ASK ' 
+I''m going to read you a list of statements about bullying.  Some of these 
+statements are true, some are false.  Please tell me if you think each one is 
+true or false@
+'+ON+iVarQ10B+OFF+'@
+@      TRUE           FALSE          NOT SURE  
+@        1              2               8     @'
+	RESP NUM 1 TO 2/8
+
+	NEXT
+
+COMMENT ============================= Q10C =====================================
+
+Q10C ASK '
+Think about youth in Anchorage aged 12-17.  On a scale from 0 to 5, how often 
+do you think bullying behavior occurs in this population, where a 5 means you 
+think the behavior is very widespread and common, and a 0 means you don''t think 
+it happens at all?@
+*(DO NOT READ)* DON''T KNOW (PROBE FOR LEANING)... CODE AS 8@
+*(DO NOT READ)* REFUSED CODE AS 9@'
+	RESP NUM 0 TO 5/8 TO 9
+
+COMMENT ============================= Q10D ====================================
+
+Q10F ASK '
+On a similar scale from 0 to 5, how much do you personally worry about the 
+issue of bullying among youth aged 12-17 in Anchorage, where a 5 means you 
+worry about the issue a lot, and a 0 means you don''t worry about it at all?@@
+*(DO NOT READ)* DON''T KNOW (PROBE FOR LEANING)... CODE AS 8@
+*(DO NOT READ)* REFUSED CODE AS 9@'
+	RESP NUM 0 TO 5/8 TO 9
+
+COMMENT ============================= Q10E ====================================
+
+LSQ10E	DEFINE
+	'A LOT OF CONTACT'/
+	'SOME CONTACT'/
+	'NOT MUCH CONTACT'/
+	'PH04'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBQ10E	DEFINE
+	'A LOT OF CONTACT'/
+	'SOME CONTACT'/
+	'NOT MUCH CONTACT'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+Q10E	ASK 'How much contact would you say you have with youth aged 12-17 who 
+live outside of your home, say through coaching, teaching or just knowing kids 
+in your neighborhood? Would you say you have a lot of contact, some contact, or 
+not much contact?@'
+	RESP SP SUBQ10E IN LSQ10E
+
+
+
+PREQ11S CONTINUE
+
+	IF(iBitQZIP = 1 .AND. iBitCond >= 75 ){GOTO PREDEMOS}
+
+
+
+
+COMMENT ============================== Q11A ===================================
+
+PREQ11 CONTINUE
+Q11A ASK '
+Have you heard of an organization called Northrim Bank?@'
+	RESP SP SUBSYN3 IN LSSYN3
+
+	UNSET iBitQ11A
+	SET iBitQ11A = NBIT(Q11A)
+
+	IF(iBitQ11A > 1){GOTO PREQ11D}
+
+COMMENT ============================== Q11B ===================================
+
+
+
+Q11B	ASK '
+Are your feelings towards Northrim Bank very positive, somewhat positive, somewhat 
+negative or very negative?@
+@ Very      SOMEWHAT      NEUTRAL       SOMEWHAT      Very      REFUSED
+@POSITIVE   POSITIVE   (DO NOT READ)    NEGATIVE    NEGATIVE              
+                                                                    
+@.4............3.............2.............1...........0............9@'
+	RESP NUM 0 TO 4/9
+
+
+
+COMMENT ============================== Q11C ===================================
+
+Q11C	ASK '
+Have you done business with or been a customer of Northrim Bank in the last 12 
+months?'
+	RESP SP SUBSYN3 IN LSSYN3 
+
+COMMENT ============================== Q11D ===================================
+PREQ11D CONTINUE
+
+LSQ11D DEFINE
+	'WELLS FARGO BANK'/
+	'FIRST NATIONAL BANK'/
+	'NORTHRIM BANK'/
+	'KEY BANK'/
+	'MT MCKINLEY BANK'/
+	'ALASKA USA CREDIT UNION'/
+	'DENALI/DENALI ALASKAN CREDIT UNION'/
+	'TRUE NORTH CREDIT UNION'/
+	'NORTHERN SKIES CREDIT UNION'/
+	'CREDIT UNION ONE'/
+	'MATANUSKA VALLEY CREDIT UNION'/
+	'MAC CREDIT UNION'/
+	'SPIRIT OF ALASKA CREDIT UNION'/
+	'OTHER (SPECIFY)^o'/
+	'15'/
+	'16'/
+	'17'/
+	'18'/
+	'19'/
+	'20'/
+	'21'/
+	'22'/
+	'23'/
+	'24'/
+	'25'/
+	'26'/
+	'27'/
+	'28'/
+	'29'/
+	'30'/
+	'31'/
+	'32'/
+	'33'/
+	'34'/
+	'35'/
+	'36'/
+	'37'/
+	'38'/
+	'39'/
+	'40'/
+	'41'/
+	'42'/
+	'43'/
+	'44'/
+	'45'/
+	'46'/
+	'47'/
+	'48'/
+	'49'/
+	'50'/
+	'51'/
+	'52'/
+	'53'/
+	'54'/
+	'55'/
+	'56'/
+	'57'/
+	'58'/
+	'59'/
+	'60'/
+	'61'/
+	'62'/
+	'63'/
+	'64'/
+	'65'/
+	'66'/
+	'67'/
+	'68'/
+	'69'/
+	'70'/
+	'71'/
+	'72'/
+	'73'/
+	'74'/
+	'75'/
+	'76'/
+	'77'/
+	'78'/
+	'79'/
+	'80'/
+	'81'/
+	'82'/
+	'83'/
+	'84'/
+	'85'/
+	'86'/
+	'87'/
+	'88'/
+	'89'/
+	'90'/
+	'91'/
+	'92'/
+	'93'/
+	'94'/
+	'95'/
+	'96'/
+	'97'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBLQ11D DEFINE
+	'WELLS FARGO BANK'/
+	'FIRST NATIONAL BANK'/
+	'NORTHRIM BANK'/
+	'KEY BANK'/
+	'MT MCKINLEY BANK'/
+	'ALASKA USA CREDIT UNION'/
+	'DENALI/DENALI ALASKAN CREDIT UNION'/
+	'TRUE NORTH CREDIT UNION'/
+	'NORTHERN SKIES CREDIT UNION'/
+	'CREDIT UNION ONE'/
+	'MATANUSKA VALLEY CREDIT UNION'/
+	'MAC CREDIT UNION'/
+	'SPIRIT OF ALASKA CREDIT UNION'/
+	'OTHER (SPECIFY)^o'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+Q11D	ASK '
+What is your primary financial institution, defined as the bank or credit union 
+at which a majority of your financial accounts are held?@'
+	RESP SP SUBLQ11D IN LSQ11D DUMMYOTHER
+
+	UNSET iBitQ11D
+	SET iBitQ11D = NBIT(Q11D)
+
+	IF(iBitQ11D = 14){
+		UNSET STXTQ11D
+		SET STXTQ11D = OTHERTEXT(Q11D, 14)
+	
+		IF(STXTQ11D = ''){
+			DISPLAY '@INTERVIEWER: You need to specify an answer.'
+			PAUSE
+			GOTO PREQ11D
+		}
+	}
+
+COMMENT ============================== Q11E ===================================
+LSQ11E DEFINE
+	'ABSOLUTELY CERTAIN'/
+	'VERY LIKELY'/
+	'SOMEWHAT LIKELY'/
+	'NOT AT ALL LIKELY'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBLQ11E DEFINE
+	'ABSOLUTELY CERTAIN'/
+	'VERY LIKELY'/
+	'SOMEWHAT LIKELY'/
+	'NOT AT ALL LIKELY'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+Q11E ASK '
+How likely are you to switch your primary financial institution at some time in 
+the next twelve months, absolutely certain, very likely, somewhat likely or not 
+at all likely?@'
+	RESP SP SUBLQ11E IN LSQ11E
+
+COMMENT ============================== SERIES 11 END ==========================
+PREQ12S CONTINUE
+	IF(iBitQbo = 22 .OR. iBitQbo = 21 .OR. iBitQbo = 24){GOTO PREQ13S}
+COMMENT ============================== SERIES 12 ==============================
+
+LSQ12A	DEFINE
+	'BERING AIR'/
+	'GRANT AVIATION'/
+	'PENINSULA AIRWAYS/PEN-AIR'/
+	'RAVN ALASKA/RAVN'/
+	'SERVANT AIR'/
+	'TAQUAN AIR'/
+	'WINGS OF ALASKA'/
+	'WRIGHT AIR SERVICE'/
+	'OTHER (SPECIFY)^o'/
+	'PH10'/
+	'PH11'/
+	'PH12'/
+	'PH13'/
+	'PH14'/
+	'PH15'/
+	'PH16'/
+	'PH17'/
+	'PH18'/
+	'PH19'/
+	'PH20'/
+	'PH21'/
+	'PH22'/
+	'PH23'/
+	'PH24'/
+	'PH25'/
+	'PH26'/
+	'PH27'/
+	'PH28'/
+	'PH29'/
+	'PH30'/
+	'PH31'/
+	'PH32'/
+	'PH33'/
+	'PH34'/
+	'PH35'/
+	'PH36'/
+	'PH37'/
+	'PH38'/
+	'PH39'/
+	'PH40'/
+	'PH41'/
+	'PH42'/
+	'PH43'/
+	'PH44'/
+	'PH45'/
+	'PH46'/
+	'PH47'/
+	'PH48'/
+	'PH49'/
+	'PH50'/
+	'PH51'/
+	'PH52'/
+	'PH53'/
+	'PH54'/
+	'PH55'/
+	'PH56'/
+	'PH57'/
+	'PH58'/
+	'PH59'/
+	'PH60'/
+	'PH61'/
+	'PH62'/
+	'PH63'/
+	'PH64'/
+	'PH65'/
+	'PH66'/
+	'PH67'/
+	'PH68'/
+	'PH69'/
+	'PH70'/
+	'PH71'/
+	'PH72'/
+	'PH73'/
+	'PH74'/
+	'PH75'/
+	'PH76'/
+	'PH77'/
+	'PH78'/
+	'PH79'/
+	'PH80'/
+	'PH81'/
+	'PH82'/
+	'PH83'/
+	'PH84'/
+	'PH85'/
+	'PH86'/
+	'PH87'/
+	'PH88'/
+	'PH89'/
+	'PH90'/
+	'PH91'/
+	'PH92'/
+	'PH93'/
+	'PH94'/
+	'PH95'/
+	'PH96'/
+	'PH97'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBQ12A	DEFINE
+	'BERING AIR'/
+	'GRANT AVIATION'/
+	'PENINSULA AIRWAYS/PEN-AIR'/
+	'RAVN ALASKA/RAVN'/
+	'SERVANT AIR'/
+	'TAQUAN AIR'/
+	'WINGS OF ALASKA'/
+	'WRIGHT AIR SERVICE'/
+	'OTHER (SPECIFY)^o'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+Q12A	ASK '
+Another new topic... Other than Alaska Airlines, what''s the first 
+regional airline that comes to your mind when you think of air travel within 
+Alaska?@'
+	RESP SP SUBQ12A IN LSQ12A DUMMYOTHER
+
+	UNSET iBitQ12A
+	SET iBitQ12A = NBIT(Q12A)
+
+	IF(iBitQ12A = 9){
+		UNSET STXTQ12A
+		SET STXTQ12A = OTHERTEXT(Q12A, 9)
+		IF(STXTQ12A = ''){
+			DISPLAY '@INTERVIEWER: You need to specify an answer.'
+			PAUSE
+			GOTO Q12A
+		}
+	}
+	
+	IF(iBitQ12A = 4){GOTO PREQ12C}
+COMMENT ============================== Q12B ===================================
+	
+Q12B	ASK '
+Have you ever heard of Ravn Alaska?@'
+	RESP SP SUBSYN2 IN LSSYN2
+
+	UNSET iBitQ12B
+	SET iBitQ12B = NBIT(Q12B)
+
+	IF(iBitQ12B > 1){GOTO PREQ13A}
+
+COMMENT ============================== Q12C ===================================
+
+PREQ12C CONTINUE
+
+Q12C	ASK '
+Are your feelings towards Ravn Alaska very positive, somewhat 
+positive, somewhat negative or very negative?@
+VERY POSITIVE......................4@
+SOMEWHAT POSITIVE..................3@
+NEUTRAL (DO NOT READ)..............2@
+SOMEWHAT NEGATIVE..................1@
+VERY NEGATIVE......................0@
+REFUSED ...........................9@'
+	RESP NUM 0 TO 4/9
+
+COMMENT ============================== Q12D ===================================
+LSQ12D	DEFINE
+	'On time arrivals and departures'/
+	'Their safety record'/
+	'Experience of booking online'/
+	'Customer service on the phone'/
+	'Customer service at the airport'/
+	'In-flight customer service'/
+	'Ticket prices'/
+	'Baggage policy'/
+	'Convenience through the airport'/
+	'Overall grade'ROTRANFIX
+
+	FOR ivarQ12D = LSQ12D RAN
+
+Q12D ASK 'Let''s do a report card for Ravn Alaska.  On a scale of A, B, C, D or 
+F, what grade would you give Ravn for…@
+'+ON+ivarQ12D+OFF+'@
+@    
+@    A           B            C          D          F        Not Sure
+@....4...........3............2..........1..........0...........8......@'
+	RESP NUM 0 TO 4/8	
+	NEXT
+COMMENT ============================== Q12E ===================================
+
+Q12E ASK 'How many trip flights have you travelled on Ravn in thw last 12 months?@
+*(INTERVIEWER: CODE 8 IF DON''T KNOW)*@
+*(INTERVIEWER: CODE 9 IF REFUSED)*@'
+	RESP NUM 0+
+
+COMMENT ============================== Q12F ===================================
+
+Q12F ASK 'On a scale from 0 to 10, how likely would you be to recommend Ravn 
+Alaska to a friend or colleague who was looking to travel by air within Alaska, 
+where a 10 is very likely and a 0 is not at all likely?@
+*(INTERVIEWER: CODE 8 IF DON''T KNOW)*@
+*(INTERVIEWER: CODE 9 IF REFUSED)*@'
+	RESP NUM 0 TO 10
+COMMENT ============================== SERIES 12 END ==========================
+PREQ13S CONTINUE
+COMMENT ============================== SERIES 13 ==============================
+
+PREQ13A CONTINUE
+
+Q13A	ASK '
+Have you heard of an organization called Alyeska (ALLIE-ESKA) 
+Pipeline Service Company?@'
+	RESP SP SUBSYN3 IN LSSYN3
+
+	UNSET iBitQ13A
+	SET iBitQ13A = NBIT(Q13A)
+	ROUTE (iBitQ13A > 1) GO PREQ13E
+
+COMMENT ============================== Q13B ===================================
+
+Q13B	ASK '
+Are your feelings towards Alyeska 
+Pipeline Service Company very positive, somewhat positive, 
+somewhat negative or very negative?@
+VERY POSITIVE......................4@
+SOMEWHAT POSITIVE..................3@
+NEUTRAL (DO NOT READ)..............2@
+SOMEWHAT NEGATIVE..................1@
+VERY NEGATIVE......................0@@
+REFUSED .........................9@
+'
+	RESP NUM 0 TO 4/9
+
+COMMENT ============================== Q13C ===================================
+
+LSQ13C	DEFINE
+	'VERY GOOD'/
+	'GOOD'/
+	'AVERAGE'/
+	'POOR'/
+	'VERY POOR'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBQ13C	DEFINE
+	'VERY GOOD'/
+	'GOOD'/
+	'AVERAGE'/
+	'POOR'/
+	'VERY POOR'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+Q13C	ASK 'How good a job do you think 
+Alyeska Pipeline Service Company does operating the Trans-Alaska 
+Pipeline?  Would you say they do a very good job, a 
+good job, a average job, a poor job or a very poor job?@'
+	RESP SP SUBQ13C in LSQ13C
+
+COMMENT ============================== Q13D ===================================
+
+LSQ13D	DEFINE
+	'VERY GOOD'/
+	'GOOD'/
+	'AVERAGE'/
+	'POOR'/
+	'VERY POOR'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBQ13D	DEFINE
+	'VERY GOOD'/
+	'GOOD'/
+	'AVERAGE'/
+	'POOR'/
+	'VERY POOR'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+Q13D	ASK 'And how good a job do you think 
+Alyeska Pipeline Service Company does protecting the Alaska 
+environment? Would you say they do a very good job, a good job, 
+an average job, a poor job or a very poor job?@'
+	RESP SP SUBQ13D in LSQ13D
+
+COMMENT ============================== Q13E ===================================
+
+LSQ13E	DEFINE
+	'WILL'/
+	'WILL NOT'/
+	'PH03'/
+	'PH04'/
+	'PH05'/
+	'PH06'/
+	'PH07'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+SUBQ13E	DEFINE
+	'WILL'/
+	'WILL NOT'/
+	'DON''T KNOW (PROBE FOR LEANING)'/
+	'REFUSED'
+
+PREQ13E	CONTINUE
+
+Q13E	ASK 'No-one can predict the future, but if you had to guess, do 
+you think that in 40 years time, the Trans-Alaska Oil Pipeline will still 
+be operating in much the same way as it is today, or not?@'
+	RESP SP SUBQ13E in LSQ13E 
+
+
+
+COMMENT =======================================================================
+COMMENT ============================= MAIN QRE END ============================
+COMMENT =======================================================================
+
+
+
+COMMENT =======================================================================
+COMMENT ============================= DEMOGRAPHICS ============================
+COMMENT =======================================================================
+
+PREDEMOS CONTINUE
+
+TXTDEM	DISPLAY 'The following questions are for statistical purposes only.@'
+
+	PAUSE
+
+COMMENT ============================== Q14 ===================================
+
+LSQ14	DEFINE
+		'Newspaper ads'/
+		'Direct mail'/
+		'TV ads'/
+		'Radio ads'/
+		'Internet ads'/
+		'PH06'/
+		'PH07'/
+		'DON''T KNOW (PROBE FOR LEANING)' ROTRANFIX /
+		'REFUSED' ROTRANFIX
+
+SUBQ14	DEFINE
+		'Newspaper ads'/
+		'Direct mail'/
+		'TV ads'/
+		'Radio ads'/
+		'Internet ads'/
+		'DON''T KNOW (PROBE FOR LEANING)' ROTRANFIX /
+		'REFUSED' ROTRANFIX
+
+Q14	ASK '
+Think about what types of advertising you normally notice and pay attention 
+to the most.  Would you say you notice (READ LIST) the most?@'
+	RESP SP ROT SUBQ14 IN LSQ14
+
+COMMENT ============================== Q15A ===================================
+
+LSQ15	DEFINE
+		'A LOT'/
+		'SOME'/
+		'A LITTLE'/
+		'NONE'/
+		'PH05'/
+		'PH06'/
+		'PH07'/
+		'DON''T KNOW'/
+		'REFUSED'
+
+SUBQ15	DEFINE
+		'A LOT'/
+		'SOME'/
+		'A LITTLE'/
+		'NONE'/
+		'DON''T KNOW'/
+		'REFUSED'
+
+Q15A	ASK '
+Do you watch regular broadcast TV a lot, a fair amount, a little or none?@'
+	RESP SP SUBQ15 IN LSQ15
+
+	UNSET iBitQ15A
+	SET iBitQ15A = NBIT(Q15A)
+
+COMMENT ============================== Q15B ===================================
+
+
+	IF (iBitQ15A < 4 ) {
+
+Q15B	ASK '
+What TV channel do you watch most often?
+@(INSTRUCTIONS: PLEASE RECORD TWO BITS OF INFORMATION FROM 1) CHANNEL NUMBER 2) CHANNEL NAME 3) CALL 
+LETTERS.  ONE BIT OF INFO IS ACCEPTABLE IF IT IS [+*so+]COMPLETELY  
+OBVIOUS[+*se+] WHAT CHANNEL WE''RE TALKING ABOUT E.G. HISTORY CHANNEL.  
+ONE BIT OF INFO IS NOT OK IF IT IS NOT OBVIOUS E.G. FOX)@'
+	RESP CODED
+
+	}
+
+COMMENT ============================== Q16A ===================================
+
+Q16A	ASK '
+Do you listen to regular broadcast radio a lot, a fair amount, a little or none?@'
+	RESP SP SUBQ15 IN LSQ15
+
+	UNSET iBitQ16A
+	SET iBitQ16A = NBIT(Q16A)
+
+
+COMMENT ============================== Q16B ===================================
+
+	IF ( iBitQ16A < 4 ) {
+
+Q16B	ASK '
+What radio station do you listen to most often?  (INSTRUCTIONS: PLEASE RECORD 
+TWO BITS OF INFORMATION FROM 1) FREQUENCY 2) CALL LETTERS 3) STATION FORMAT.)@'
+	RESP CODED
+	}
+
+	
+
+COMMENT ============================== Q17A ===================================
+
+	IF (iBitQZIP = 1) {
+
+Q17A	ASK '
+How many DAYS per week, out of six days, do you read the print version of 
+the Anchorage Daily News?@
+(NOT SURE CODE AS 8, FOR REFUSED CODE AS 9)@'
+	RESP NUM 0 TO 6 / 8 TO 9
+	}
+
+
+COMMENT ============================== Q17C ===================================
+
+PREQ17C	CONTINUE
+
+Q17C	ASK '
+How many days per week, out of seven, do you read the 
+Anchorage Daily News online?@
+(NOT SURE CODE AS 8, FOR REFUSED CODE AS 9)@'
+	RESP NUM 0 TO 9
+
+COMMENT ============================== Q18A ===================================
+
+Q18A	ASK '
+On average, how many hours a day do you use a computer or mobile device to 
+go online?@
+(INTERVIEWER: @-LESS THAN 1 HOUR BUT NOT ZERO = 1@-NOT SURE..............98@
+-REFUSED ............99)@'
+	RESP NUM 0 TO 99
+
+	IF(Q18A < 1){GOTO PREQ19}
+	IF(Q18A = 98){GOTO PREQ19}
+	IF(Q18A = 99){GOTO PREQ19}
+
+COMMENT ============================== Q18B ===================================
+
+STQ18B	DEFINE
+		'Shopping'/
+		'News'/
+		'Watching TV or movies'/
+		'Social networking, like Facebook'
+
+LSQ18B	DEFINE
+		'Yes'/
+		'No'/
+		'PH03'/
+		'PH04'/
+		'PH05'/
+		'PH06'/
+		'PH07'/
+		'NOT SURE'
+
+SUBQ18B	DEFINE
+		'Yes'/
+		'No'/
+		'NOT SURE'
+
+	FOR sVarQ18B = STQ18B
+
+Q18B	ASK '
+Do you use the Internet for '+ON+sVarQ18B+OFF+'?@'
+	RESP SP SUBQ18B IN LSQ18B
+
+	NEXT
+
+COMMENT ============================== Q19 ===================================
+
+PREQ19 CONTINUE
+
+LSQ19	DEFINE
+		'DEMOCRAT'/
+		'REPUBLICAN'/
+		'OTHER PARTY'/
+		'NO PARTY'/
+		'PH05'/
+		'PH06'/
+		'PH07'/
+		'DON''T KNOW (PROBE FOR LEANING)'/
+		'REFUSED'
+
+SUBQ19	DEFINE
+		'DEMOCRAT'/
+		'REPUBLICAN'/
+		'OTHER PARTY'/
+		'NO PARTY'/
+		'DON''T KNOW (PROBE FOR LEANING)'/
+		'REFUSED'
+
+Q19	ASK '
+What is your registered party affiliation?  Are you a Democrat, a Republican, 
+are you registered with another party, or are you no party?@'
+	RESP SP SUBQ19 IN LSQ19
+
+COMMENT ============================== Q20 ===================================
+
+LSQ20	DEFINE
+		'CONSERVATIVE'/
+		'MODERATE'/
+		'PROGRESSIVE'/
+		'PH04'/
+		'PH05'/
+		'PH06'/
+		'PH07'/
+		'DON''T KNOW (PROBE FOR LEANING)'/
+		'REFUSED'
+
+SUBQ20	DEFINE
+		'CONSERVATIVE'/
+		'MODERATE'/
+		'PROGRESSIVE'/
+		'DON''T KNOW (PROBE FOR LEANING)'/
+		'REFUSED'
+
+Q20	ASK '
+Politically, do you consider yourself to be conservative, 
+moderate or progressive?@'
+	RESP SP SUBQ20 IN LSQ20
+
+COMMENT ============================== Q21 ===================================
+PREQ21 CONTINUE
+STQ21	DEFINE
+		'Years'/
+		'Months'
+
+	FOR sVarQ21 = STQ21
+
+Q21	ASK '
+How many years and months have you lived in Alaska?@
+('+ON+sVarQ21+OFF+')@
+(INTERVIEWER: REFUSED = 99)'
+	RESP NUM 0 TO 99
+
+	NEXT
+
+COMMENT ============================== Q22 ===================================
+
+Q22	ASK '
+In what year were you born?@
+(FOR REFUSED CODE AS 99)@'
+	RESP NUM 0 TO 9999
+
+COMMENT ============================== Q23A ===================================
+
+Q23A	ASK '
+Of the people currently living in your household, how many are children or 
+adolescents aged 18 or under?@
+(FOR REFUSED CODE AS 9)@'
+	RESP NUM 0 TO 9
+
+
+	UNSET PPLNUM
+	SET PPLNUM = Q23A
+
+
+
+
+COMMENT ============================== Q23B ===================================
+	IF(PPLNUM >= 1){
+
+	
+	callfunc('limitresp',0,PPLNUM)
+Q23B	ASK '
+How many are aged 12-17?@
+(FOR REFUSED CODE AS 9)@'
+	RESP NUM 0 TO 9
+	}
+
+
+
+COMMENT ============================== Q24 ===================================
+
+PREQ24 CONTINUE
+
+LSQ24	DEFINE
+		'MARRIED'/
+		'SINGLE'/
+		'PH03'/
+		'PH04'/
+		'PH05'/
+		'PH06'/
+		'PH07'/
+		'PH08'/
+		'REFUSED'
+
+SUBQ24	DEFINE
+		'MARRIED'/
+		'SINGLE'/
+		'REFUSED'
+
+Q24	ASK '
+Are you married or single?@'
+	RESP SP SUBQ24	IN LSQ24
+
+COMMENT ============================== Q25 ===================================
+
+LSQ25	DEFINE
+		'$0-20,000'/
+		'$20-40,000'/
+		'$40-60,000'/
+		'$60-80,000'/
+		'$80-100,000'/
+		'$100-150,000'/
+		'$150,000 or more'/
+		'DON''T KNOW'/
+		'REFUSED'
+
+Q25	ASK '
+In which of the following broad categories does your household income fall?@'
+	RESP SP LSQ25
+
+COMMENT ============================== Q26 ===================================
+
+LSQ26	DEFINE
+		'White'/
+		'Black/African American'/
+		'Asian'/
+		'Native Hawaiian or other Pacific Islander'/
+		'American Indian or Alaska Native'/
+		'Combination of two or more races'/
+		'Some other race'/
+		'DON''T KNOW'/
+		'REFUSED'
+
+Q26	ASK '
+Which one of the following best describes your race?@'
+	RESP SP LSQ26
+
+COMMENT ============================== Q27 ===================================
+
+LSQ27	DEFINE
+		'MALE'/
+		'FEMALE'/
+		'PH03'/
+		'PH04'/
+		'PH05'/
+		'PH06'/
+		'PH07'/
+		'PH08'/
+		'REFUSED'
+
+SUBQ27	DEFINE
+		'MALE'/
+		'FEMALE'/
+		'REFUSED'
+
+Q27	ASK '
+GENDER..@'
+	RESP SP SUBQ27 IN LSQ27
+COMMENT ============================== Q30 ===================================	
+
+Q30 ASK'
+Finally, Alaska Survey Research is building a database of individuals around 
+the state who would be interested in being paid to participate in online surveys 
+and focus groups. Would you be interested in being in our database and hearing 
+about these opportunities?@'
+	RESP SP SUBSYN3 IN LSSYN3
+
+	UNSET iBitQ30
+	SET iBitQ30 = NBIT(Q30)
+
+
+COMMENT ================================    QEMAIL      ============================
+	IF(iBitQ30 = 1){
+
+PREEMAIL CONTINUE
+
+QEMAIL	ASK '
+Can you share your email address with me? It won’t be used for any other 
+purpose than to invite you to a focus group or send you a survey, and you may 
+unsubscribe at any time.@'
+	RESP CODED(99) REF
+
+	ROUTE (QEMAIL = REF) GO passEML
+
+	SET bAtFlag = 0
+	SET bDotFlag = 0
+	SET iAtCont = 0
+	SET iDotCont=0
+
+	UNSET sEmail
+	SET sEmail = QEMAIL
+
+	FOR iIndex = 1 TO 50
+		SET cLetter = SUBSTR(sEmail,iIndex,1)
+
+		IF (cLetter=' ') {
+
+DISLET DISPLAY '@An email can not have spaces. Please CHECK.'
+		PAUSE
+
+			GOTO preEMAIL
+		}
+
+	IF (cLetter='@') { 
+		IF (iIndex = 1) {
+DISAT DISPLAY '@Only letters or numbers can be used as the first character in an email address. Please CHECK.'
+			PAUSE
+
+			GOTO preEMAIL 
+		}
+
+		SET bAtFlag = bAtFlag + 1
+
+		IF (bAtFlag > 1) {
+DISATFL DISPLAY '@An email address can not have more than one AT. Please CHECK.'
+			PAUSE
+
+			GOTO preEMAIL 
+		}
+
+		SET iAtCont = iIndex
+		SET iDiff   = iIndex - iDotCont
+		
+		IF(iDiff=1){
+DISDIFF	DISPLAY '@An emial address can not have more than ine AT follow by a dot ".". Please CHECK.'
+			PAUSE
+
+			GOTO preEMAIL
+		}
+		SET bDotFlag = 0
+	}
+	
+
+	
+	IF (cLetter='.') {
+
+		IF(iIndex = 1) {
+DISLET1 DISPLAY '@Only letters or numbers can be used as the first character in an email address. Please CHECK.'
+			PAUSE
+
+			GOTO preEMAIL
+		}
+
+		SET bDotFlag = 1
+		SET iDotCont = iIndex
+		SET iDiff = iIndex - iAtCont
+
+		IF(iDiff=1) {
+DISDIFF1 DISPLAY '@An email address can not have a dot "." follow by an AT. Please CHECK.'
+			PAUSE
+
+			GOTO preEMAIL
+		}
+	}
+	
+	
+	IF (cLetter='') {
+		SET iDiff = iIndex - iDotCont
+		IF(iDiff<3){
+DISLET2	DISPLAY '@An email address must have al least 2 characters after the dot ".". Please CHECK.'
+			PAUSE
+
+			GOTO preEMAIL
+		}
+	}
+
+	NEXT
+
+
+	IF (bAtFlag = 1 .AND. bDotFlag = 1) { GOTO passEML }
+
+DISAFT2	DISPLAY '@An email address must have at least un AT and one dot "." after.'
+	PAUSE
+
+	GOTO preEMAIL
+	
+passEML	CONTINUE
+	}
+	ELSE {GOTO PRECOMP}
+COMMENT =======================================================================
+COMMENT ========================= DEMOGRAPHICS END ============================
+COMMENT =======================================================================
+
+PRECOMP	CONTINUE
+
+	SET COMP=1
+	SET QTIPCODE=1
+	GOTO PRETHX
+
+COMMENT ============================= TERM ====================================
+
+PRETERM	CONTINUE
+
+TERM	DISPLAY '
+Those are all the questions I have today. Thank you for participating in 
+our survey@@'
+	PAUSE
+
+	SET SMSVAR = 'tempcode'
+	CALLFUNC('putsmvar',SMSVAR,QTIPCODE)
+	SIGNAL 2
+
+COMMENT ============================= QUITEX ==================================
+
+PREQUIT	CONTINUE
+
+QUITEX DISPLAY '
+----------------@
+***   QUIT   ***@
+----------------@@'
+
+	PAUSE
+	UNSET BQUITOK
+	SET BQUITOK = NBIT(QUITOK)
+
+	IF ( BQUITOK = 1 ) { 
+		SET COMP=18
+		SET QTIPCODE=17
+	} ELSE {
+		SET COMP=19
+		SET QTIPCODE=75 
+	}
+
+	SET SMSVAR = 'tempcode'
+	CALLFUNC('putsmvar',SMSVAR,QTIPCODE)
+	SIGNAL 2
+
+COMMENT ================================ THX ==================================
+
+PRETHX	CONTINUE
+
+THX	DISPLAY '
+That completes the survey. I have a telephone number for Alaska Survey Research 
+that you can call with any comments, compliments or complaints. Would you like 
+the number? 907-278-4600 Thank you very much for your help. Goodbye.@@
+(INTERVIEWER HANG UP PHONE AFTER READING)@'
+	PAUSE
+
+QUALITY	ASK '
+                      [+*so+]QUALITY  CERTIFICATION[+*se+]@
+
+I hereby certify that this interview was conducted as follows:@@
+
+*  In accordance to the study instructions and questionnaire design.@
+*  In accordance to company quality standards.@
+*  In a professional and courteous manner.@
+*  No misleading or false information has been entered into this survey.@@
+
+I understand as a representative of ASC that I am to provide high quality 
+interviewing while remaining professional and courteous at all times.  
+Additionally, I understand that my interviews will be reviewed and verified on 
+an individual basis.@@
+
+INTERVIEW CONDUCTED AND CERTIFIED BY: (Interviewer enter your full name):'
+	RESP CODED NODATA
+
+QUALFIX FIX( 70 ) QUALITY FORCE( 2 )
+
+	SET SMSVAR = 'tempcode'
+	CALLFUNC('putsmvar',SMSVAR,QTIPCODE)
+
+	SET TIM2=TIMEOFDAY
+TIM2FIX	FIX(16) 'timeend='+TIM2 FORCE(2)
+
+	CALLFUNC('datetime', ENDIN)
+ENDTIME  FIX(20) 'endtime='+ENDIN FORCE(2)
+
+	CALLFUNC('datetext',STARTINT, INIDATE)
+	CALLFUNC('datetext',ENDIN, FINDATE)
+
+INIDATE  FIX(40) INIDATE FORCE(2)
+FINDATE  FIX(40) FINDATE FORCE(2)
+
+	SET INTLEN = ENDIN - STARTINT
+LENGTH  FIX(12) 'length='+INTLEN FORCE(2) 
+
+COMMENT ============================= QEND ====================================
+
+QEND CONTINUE
+	END
